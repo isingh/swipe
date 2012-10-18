@@ -1,0 +1,397 @@
+
+#legend-wrap {
+  position: absolute;
+  right: -20px;
+  top: 10px;
+  background: rgba(255,255,255, .6);
+  border-radius: 6px;
+  font-size: 100%;
+  margin-top: 0px;   
+  padding: 5px;
+  white-space: nowrap;
+}
+
+#legend-wrap h4 {
+  margin-top: 10px;
+}
+
+#legend-wrap #legend {
+  margin-top: 10px;
+  
+}
+
+.navbar {
+  box-shadow: 0 1px 10px rgba(0,0,0, .30);  
+  margin-bottom: 0;
+  overflow: visible;
+}
+
+  
+#pie {
+  margin: 10px 0;
+}
+
+.content {
+  width: auto;
+}
+
+th[data-sortable] {
+  cursor: pointer;
+}
+
+td.numbered-column,
+th.numbered-column {
+  background-color: #eeeeee !important;
+  font-weight: normal;
+  line-height: 18px;
+  text-align: center;
+  text-shadow: 0 1px 0 #ffffff;
+  width: 16px;
+}
+
+th.checkbox-column,
+td.checkbox-column {
+width: 16px;
+}
+
+.checkbox-column .cbox,
+.mycheckbox {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 0 rgba(0,0,0, 0);
+  border-radius: 2px;
+  cursor: pointer;
+  display: -moz-inline-box;
+  display: inline-block;
+  font-size: 1px;
+  height: 16px;
+  margin: 4px;
+  vertical-align: text-bottom;
+  width: 16px;
+}
+
+.checkbox-column .cbox {
+  margin: 0;  
+}
+
+.controls .mycheckbox {
+  margin-left: 0
+}
+
+.checkbox-column .cbox.checked {
+  background: #fff url(../img/checkmark.png) no-repeat center center;
+  background-size: 16px 16px;
+}
+
+.mycheckbox.disabled,
+.checkbox-column .cbox.disabled {
+  cursor: default;
+  opacity: .5;
+}
+
+.content {
+  background: #fff;
+  box-shadow: 0 -1px 10px rgba(0,0,0, .30);  
+  margin: 10px 10px 0;
+  /*border: 10px solid rgba(0,0,0, .8);*/
+  border-bottom: 0;
+  min-height: 1000px;
+  margin-top: 50px;
+  /*
+  bottom: 0;
+  background: #fff;
+  box-shadow: 0 1px 10px rgba(0,0,0, .30);
+  left: 13px; 
+  margin: 0 auto; 
+  min-height: 700px;
+  position: absolute; 
+  right: 13px; 
+  top: 53px; 
+  */
+}
+.white {
+  color: #fff;
+}
+
+.center {
+  text-align: center;
+}
+
+
+.mycheckbox.checked,
+.cbox.checked {
+  background: #fff url(../img/checkmark.png) no-repeat center center;
+  background-size: 16px 16px;
+}
+
+.mycheckbox.disabled,
+.cbox.disabled {
+  cursor: default;
+  opacity: .5;
+}
+
+.breadcrumb.plain {
+  background: none;
+  background-color: none;
+  background-image: none;
+  border: none;
+  border-bottom: 1px solid #eee; 
+  border-radius: 0;
+  box-shadow: none;
+  filter: none;
+  list-style: none;
+  margin: 5px 0;
+  padding: 5px 0 8px;
+}
+
+.breadcrumb li {
+  display: inline-block;
+  *display: inline;
+  text-shadow: 0 1px 0 #ffffff;
+  *zoom: 1;
+}
+
+.breadcrumb .divider {
+  padding: 0 5px;
+  color: #999999;
+}
+
+.breadcrumb .active a {
+  color: #333333;
+}
+
+.breadcrumb.plain {
+  
+}
+
+hr.dashed {
+  border-top: 1px dashed #eeeeee;
+  border-bottom: 1px dashed #ffffff;
+}
+
+
+.ml10 {
+  margin-left: 10px;
+}
+.mr10 {
+  margin-right: 10px;
+}
+
+.legendColorBox div {
+  border: none;
+  box-shadow: none;
+  border-radius: 4px;
+}
+
+.navbar-inner {
+  padding-right: 20px;
+  padding-left: 20px;
+  background-color: none;
+  background-repeat: repeat;
+}
+
+.campaign-pie-labels {
+  font: normal 14px Helvetica;
+  margin-left: 5px;
+}
+
+.campaign-pie-labels span {
+  display: inline-block;
+  width: 30px;
+}
+
+/**
+ * offer blocks
+ */
+.offer-item {
+  border-right: 1px solid #e1e1e8; 
+  cursor: pointer; 
+  margin-right: 7px;
+  margin-top: 1px; 
+  opacity: .8;
+  padding-right: 4px; 
+}
+
+
+th.sort {
+  background: #f3f3f3;
+}
+
+tr.odd td.sort {
+  background-color: #f9f9f9 !important;
+}
+
+tr.even td.sort {
+  background-color: #e9e9e9 !important;
+}
+
+.campaign-info {
+  border-left: 1px solid #eee; 
+  height: 225px;   
+  margin-top: 10px;
+  padding-left: 25px;  
+}
+
+.lead.smaller {
+  float: left;
+  font-size: 120%;
+}
+
+@media (max-width: 1200px) {
+  #legend-wrap {
+    right: 0;
+    width: 130px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  #legend-wrap {
+    background: rgba(255,255,255, .6);
+    border-radius: 6px;
+    font-size: 100%;
+    margin-top: 0px;   
+    padding: 5px;
+    top: 0;
+  }
+  
+  #legend-wrap h4 {
+    font-size: 100%;
+  }
+
+  #legend-wrap .campaign-pie-labels {
+    font-size: 120%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+  .navbar-fixed-top {
+    margin-bottom: 0px;
+    margin-left: 0;
+  }
+
+  #legend-wrap {
+    background: rgba(255,255,255, .6);
+    border-radius: 6px;
+    margin-top: 0px;   
+    padding: 5px;
+    right: 10px;
+    top: 0;
+  }
+  
+  #legend-wrap h4 {
+    font-size: 100%;
+  }
+
+  #legend-wrap .campaign-pie-labels {
+    font-size: 120%;
+  }
+  
+  #pie {
+   margin: 0 auto 10px;
+  }
+
+  .navbar-static .navbar-inner {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  
+  .navbar .btn-navbar {
+    display: block;
+    margin-right: -10px;
+  }
+
+  .navbar-fixed-top .navbar-inner,
+  .navbar-fixed-bottom .navbar-inner {
+    padding: 0px;
+  }
+
+  .navbar .brand {
+    padding-right: 0;
+    padding-left: 0;
+    margin: 0 0 0 -25px;
+  }
+
+  .content {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  .navbar .navbar-inner {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  #legend-wrap {
+    margin-top: 0px;   
+    position: absolute;
+    right: auto;
+    left: 10px;
+    top: auto;
+    bottom: 0;
+  }
+  
+  #legend-wrap h4 {
+    font-size: 100%;
+  }
+
+  #legend-wrap .campaign-pie-labels {
+    font-size: 120%;
+    display: inline-block;
+  }
+
+  #pie {
+   width: 100%;
+   margin: 0 auto;
+  }  
+
+  .campaign-info {
+    border-left: 0;
+    border-top: 1px solid #eee; 
+    height: auto; 
+    margin: 10px;
+    overflow: auto;
+    padding: 10px 10px 0;  
+  }
+
+  .content {
+    margin-top: 10px;
+  }
+
+  #pie {
+   width: 100%;
+   margin: 0 auto 10px;
+  }
+
+  .navbar-fixed-top,
+  .navbar-fixed-bottom {
+    margin: 0;
+  }
+
+  .navbar .brand {
+    padding-right: 0;
+    padding-left: 0;
+    margin: 0 0 0 -25px;
+  }
+
+  .navbar .btn-navbar {
+    margin-right: -5px;
+  }
+
+  .container-fluid {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .campaign-info {
+    display: none;
+  }
+}
