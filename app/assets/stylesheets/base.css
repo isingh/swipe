@@ -197,18 +197,18 @@ a:hover {
 }
 
 .noise {
-  background: url(../img/noise_tile.png) repeat top left;
+  background: url(noise_tile.png) repeat top left;
 }
 .leather {
-  background: url(../img/leather_tile.png) repeat top left;
+  background: url(leather_tile.png) repeat top left;
 }
 
 .thatch {
-  background: url(../img/thatch_tile.png) repeat top left;
+  background: url(thatch_tile.png) repeat top left;
 }
 
 .paper {
-  background: url(../img/paper_tile.png) repeat top left;
+  background: url(paper_tile.png) repeat top left;
 }
 
 .container,
@@ -1820,7 +1820,7 @@ table .span24 {
   *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url("../img/glyphicons-halflings.png");
+  background-image: url("glyphicons-halflings.png");
   background-position: 14px 14px;
   background-repeat: no-repeat;
 }
@@ -1831,7 +1831,7 @@ table .span24 {
 }
 
 .icon-white {
-  background-image: url("../img/glyphicons-halflings-white.png");
+  background-image: url("glyphicons-halflings-white.png");
 }
 
 .icon-glass {
@@ -3666,7 +3666,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar .brand img.logo {
-  background: url(../img/logo.png) no-repeat top left;
+  background: url(logo.png) no-repeat top left;
   background-size: 78px 26px;
   margin: 6px 0 7px 20px;
   width: 78px;
