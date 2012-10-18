@@ -44,6 +44,7 @@
 
 
 %script{:src => "https://js.cardspring.com/v1/cs.js"}
+= include_gon
 
 - content_for :page_scripts do
   = javascript_include_tag('pages/newcard.js')
