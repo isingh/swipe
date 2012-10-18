@@ -1,0 +1,151 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container-fluid
+      %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.brand{:href => "./index.html"}
+        %img.logo{:alt => "logo", :src => "data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="}/
+      .nav-collapse
+        %ul.nav
+          %li
+            %a{:href => "index.html"} Dashboard
+          %li
+            %a{:href => "index.html"} Payment History
+        %ul.nav.pull-right
+          %li.dropdown
+            %a.dropdown-toggle.no-hover{"data-toggle" => "dropdown", :href => "#"}
+              You are logged in as
+              %span.white Kieran Boyle
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "#"} My Account
+              %li.divider
+              %li
+                %a{:href => "#"} Sign Out
+.content.container-fluid
+  %ul.breadcrumb.plain{:style => "margin-bottom: 15px;"}
+    %li.active My Dashboard
+  .row-fluid
+    .span4.clearfix{:style => "position: relative;"}
+      #pie{:style => "width: 200px; height: 200px; margin-top: 10px;"}
+      #legend-wrap
+        %h4 Savings
+        #legend
+    .span8
+      .campaign-info
+        %h2 My Dashboard
+        %p.lead{:style => "margin-top: 5px; float: left;"}
+          Welcome to your dashboard! You can easily manager
+          %strong new
+          or
+          %strong existing
+          campaigns from this page.
+        %br
+          %p.lead.smaller
+            To create a new campaign click
+            %a{"data-toggle" => "modal", :href => "#new"} here
+            or push the "New Campaign" button.
+    %hr
+      .tabbable
+        / Only required for left/right tabs
+        %ul.nav.nav-tabs
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#campaigns"} Transactions
+          %li
+            %a{"data-toggle" => "tab", :href => "#live"} Pending
+          %li
+            %a{"data-toggle" => "tab", :href => "#inactive"} Offers
+        .tab-content
+          #campaigns.tab-pane.active
+            .clearfix
+              %a.btn.btn-success.pull-left.mr10{"data-toggle" => "modal", :href => "#new"} New Campaign
+            %section#gridCustomization{:style => "margin-top: 10px;"}
+              %table#grid
+          #live.tab-pane
+            %p.center You do not currently have any live campaigns.
+          #inactive.tab-pane
+            %p.center You do not have any inactive campaigns.
+      #deleteModal.modal.hide
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"} ×
+          %h3 Delete Campaign
+        .modal-body
+          %p
+            Are you sure you want to remove the campaign "
+            %b> New Apple
+            "?
+        .modal-footer
+          %a.btn{"data-dismiss" => "modal", :href => "#"} Cancel
+          %a.btn.btn-primary{:href => "#"} Yes, continue
+      #new.modal.hide
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"} ×
+          %h3 New Campaign
+        .modal-body
+          %form.form-horizontal
+            .control-group
+              %label.control-label{:for => "input01"} Name:
+              .controls
+                %input#input01.input-xlarge{:type => "text"}
+            .control-group
+              %label.control-label{:for => "input01"} Offer Type:
+              .controls
+                .btn-group.dropdown
+                  %button.btn Choose...
+                  %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
+                    %span.caret
+                  %ul.dropdown-menu
+                    %li
+                      %a{:href => "#"} Cost-per-acquistion (CPA)
+                    %li
+                      %a{:href => "#"} Cost-per-click (CPC)
+                    %li
+                      %a{:href => "#"} Pay-per-install (PPI)
+            .control-group.form-inline
+              %label.control-label{:for => "input01"} Starts:
+              .controls
+                .input-prepend
+                  %span.add-on
+                    %i.icon-calendar
+                  %input#start.input-small{:name => "start", :placeholder => "01/01/2012", :size => "4", :type => "text"}
+                %label.ml10.mr10{:for => "input01"} Ends:
+                .input-prepend
+                  %span.add-on
+                    %i.icon-calendar
+                  %input#end.input-small{:name => "end", :placeholder => "01/01/2012", :size => "4", :type => "text"}
+            .control-group
+              %label.control-label{:for => "input01"} Budget:
+              .controls
+                .input-prepend.input-append
+                  %span.add-on $
+                  %input#budget.span3{:name => "budget", :placeholder => "100", :style => "text-align: right;", :type => "text"}
+                    %span.add-on{:style => "border-top-right-radius: 4px;  border-bottom-right-radius: 4px;"} .00
+                    %i.btn.btn-danger{"data-content" => "If you exhaust your budget before the campaign expires we will attempt to process an <b>additional 15%.</b>", "data-original-title" => "Campaign Budget", "data-placement" => "right", :href => "#", :rel => "popover", :style => "margin-top: 3px; opacity: .5;  cursor: help;"}
+            .control-group
+              %label.control-label{:for => "input01"} Bid:
+              .controls
+                .input-prepend.input-append
+                  %span.add-on $
+                  %input#budget.span3{:name => "budget", :placeholder => ".25", :style => " border-top-right-radius: 4px;  border-bottom-right-radius: 4px;", :type => "text"}
+                    %i.btn.btn-danger{"data-content" => "The bid price to enter here will influence the level of engagement your offer(s) will receive.", "data-original-title" => "Bid Price", "data-placement" => "right", :href => "#", :rel => "popover", :style => "margin-top: 3px; opacity: .5; cursor: help;"}
+            .control-group
+              %label.control-label Offers:
+              .controls
+                %div
+                  %input{"data-items" => "4", "data-provide" => "typeahead", "data-source" => "["MacBook Pro", "iPhone 5", "Snap & Sync"]", :type => "text"}
+                    %i.btn.btn-danger{"data-content" => "Type in the name of the offer(s) you would like to add to this campaign and select it from the results list.", "data-original-title" => "Add Offers", "data-placement" => "right", :href => "#", :rel => "popover", :style => "margin-top: 3px; opacity: .5; cursor: help;"}
+                %div{:style => "border-top: 1px solid #eee; padding-top: 18px; margin-top: 18px; position: relative;"}
+                  %div{:style => "position: absolute; top: -9px; left: 10px; background: #fff; padding: 0 3px; font: italic 12px Georgia; color: #999;"} Selected Offers
+                  %code
+                    %i.icon-remove.offer-item>
+                    MacBook Pro
+            .control-group
+              %label.control-label{:for => "input01"} Active:
+              .controls
+                %span.mycheckbox.checked
+        .modal-footer
+          %a.btn{"data-dismiss" => "modal", :href => "#"} Cancel
+          %a.btn.btn-primary{:href => "#"} Save, I'm finished
