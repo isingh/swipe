@@ -10,6 +10,21 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-//= require jquery_ujs
+//= require jquery.min
+//= require charting/jquery.flot
+//= require charting/jquery.flot.pie
+//= require charting/jquery.flot.time
+//= require charting/visualize
+//= require bootstrap-transition
+//= require bootstrap-alert
+//= require bootstrap-modal
+//= require bootstrap-dropdown
+//= require bootstrap-tab
+//= require bootstrap-tooltip.js
+//= require bootstrap-popover.js
+//= require bootstrap-button.js
+//= require bootstrap-collapse.js
+//= require bootstrap-carousel.js
+//= require bootstrap-typeahead.js
+//= require bootstrap-grid.js
 //= require_tree .
