@@ -9,7 +9,7 @@
     %style{ :type => 'text/css' }
       = yield :page_styles
     = yield :page_head
-  %body
+  %body{ :class => 'thatch'}
     %p.notice= @notice
     %p.alert= @alert
     = yield

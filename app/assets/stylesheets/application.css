@@ -13,5 +13,4 @@
  *= require base
  *= require responsive
  *= require theme
- *= require_tree .
  */
