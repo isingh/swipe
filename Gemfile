@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 
+gem 'devise'
+gem 'haml'
 gem 'jquery-rails'
 gem 'sqlite3'
 gem 'twilio-ruby'
