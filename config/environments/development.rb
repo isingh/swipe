@@ -35,3 +35,8 @@ Swipe::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 end
+
+CARD_SPRING_APP_ID      = 'A8pLh1jNshzaLkPP6fOy6YGhf5EKxXBm'
+CARD_SPRING_SECRET      = 'AAWvJaOqIMhfb3XfhlbFP1QtHXdCbgVq'
+CARD_SPRING_API_URL     = 'https://api-test.cardspring.com'
+CARD_SPRING_TEST_MODE   = true
