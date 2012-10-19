@@ -58,10 +58,11 @@ $(document).ready(function() {
     },
 
     cardSpringResponseHandler: function(data){
-      console.log("getting", data);
-
+      console.log("response", data);
       if(data.error){
-        alert("ERROR #"+data.error+": "+data.reason);
+        $('#new').modal('hide');
+        cardReg.cleanForm($('#new'));
+        cardReg.throwAlert("error", "Something wrong happened...", "ERROR #"+data.error+(data.reason ? ": "+data.reason : ""));
         return false;
       }
 
@@ -73,25 +74,39 @@ $(document).ready(function() {
         data: data,
         success: function(data, textStatus, xhr) {
           $('#new').modal('hide');
+          cardReg.cleanForm($('#new'));
+          cardReg.throwAlert("success", "Card added!", "Your card was successfully added!");
           cardReg.printCardsInfo(data.all_cards);
         },
         error: function(xhr, textStatus, errorThrown) {
-          console.log("F**K!! There's an error!!");
           $('#new').modal('hide');
-          alert("ERROR: "+errorThrown);
+          cardReg.cleanForm($('#new'));
+          cardReg.throwAlert("error", "Something wrong happened...", errorThrown);
         }
       });
     },
 
     printCardsInfo: function(data){
-      var info = this.gridInfo;
+      var info = this.gridInfo,
+        $grid = $('#grid');
       info.data = this.structureData(data);
-      $('#nocardsmessage').hide();
-      $('#grid').grid(info).show();
+      if(info.data.length > 0){
+        $('#nocardsmessage').hide();
+
+        if($.type(data) == "string")
+          $grid.grid(info);
+        else{
+          console.log("reloading", info.data);
+          $grid.grid('reload', info.data);
+        }
+
+        $grid.show();
+      }
     },
 
     structureData: function(data){
-      data = $.parseJSON(data);
+      if($.type(data) == "string")
+        data = $.parseJSON(data);
       var ret = [];
 
       for(var i=0; i<data.length; i++){
@@ -105,16 +120,39 @@ $(document).ready(function() {
           }]
         });
       }
-      console.log("ret", ret);
       return ret;
+    },
+
+    cleanForm: function($form){
+      $form.find('.card-number').val('');
+      $form.find('.submit-button').removeAttr('disabled');
+    },
+
+    throwAlert: function(type, title, content){
+      var $alert = $('<div>');
+      $alert
+        .attr('id','alertblock')
+        .addClass("alert alert-block fade in alert-"+type)
+        .attr('style',"margin-top: 10px");
+      $('<button>')
+        .addClass('close')
+        .attr('data-dismiss','alert')
+        .html("×")
+        .appendTo($alert);
+      $('<h4>')
+        .addClass('alert-heading')
+        .html(title)
+        .appendTo($alert);
+      $('<p>')
+        .html(content)
+        .appendTo($alert);
+      $alert.prependTo('.content.container-fluid');
     }
   };
 
   // Calling everything
-  console.log("Info", gon.new_card_info);
   cardReg.enableAddNewCard();
   if(gon.cards){
-    console.log("cards", gon.cards);
     cardReg.printCardsInfo(gon.cards);
   };
 });
