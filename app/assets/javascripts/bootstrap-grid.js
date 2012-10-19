@@ -1,5 +1,5 @@
 !function(window, $){
-  "use strict"; 
+  "use strict";
 
   $.fn.grid = function(config){
 
@@ -97,7 +97,7 @@
             array = [];
 
         tr.attr('data-uid', row.id || i + 1);
-        
+
         tbody.append(tr);
 
         if(typeof(row.cells[0]) === 'object'){
@@ -167,7 +167,7 @@
 
         if(item.children().hasClass('cbox')){
           $t.config.options.checkbox = true;
-          $t.checked = [];          
+          $t.checked = [];
         }
 
         if(sortable){
@@ -213,7 +213,7 @@
           checkbox[action]('checked').closest('tr')[action]('selected ');
           // if a callback has been defined fire it
           if($.isFunction($t.config.onSelect)){
-            // set scope of this (table DOM element), event, checked state, and array of selected row ids 
+            // set scope of this (table DOM element), event, checked state, and array of selected row ids
             $t.config.onSelect.call($t.container[0], e, checked, $t.checked);
           }
         });
@@ -240,24 +240,24 @@
         $.each(rows, function(index, row){
           row.filter = key($(row).children('td').eq(column));
         });
-        
+
         rows.sort(function(a, b){
           if (a.filter < b.filter) return -direction;
           if (a.filter > b.filter) return direction;
           return 0;
         });
-        
+
         $.each(rows, function(i, row){
           $t.tbody.append(row);
           row.filter = null;
         });
-        
+
         $('th', $t.thead).removeClass('sort desc asc').filter(':nth-child(' + (column + 1) + ')');
 
         icons.removeClass('icon-chevron-up icon-chevron-down');
 
         if(direction == 1){
-          th.addClass('desc');          
+          th.addClass('desc');
           arrow.addClass('icon-chevron-up');
         }else{
           th.addClass('asc');
@@ -267,7 +267,7 @@
         if($t.config.options.highlight){
           th.addClass('sort');
           $('td', $t.tbody).removeClass('sort').filter(':nth-child(' + (column + 1) + ')').addClass('sort');
-        }          
+        }
 
         $('tr:visible', $t.tbody).removeClass('odd even');
         $('tr:visible', $t.tbody).filter(':even').addClass('even').end().filter(':odd').addClass('odd');
@@ -320,7 +320,7 @@
           if(item.default){
             $t.sort = {
               index: i,
-              direction: item.direction || ''              
+              direction: item.direction || ''
             };
           }
         }
@@ -351,7 +351,7 @@
       }else{
         key = null;
       }
-    
+
       return key;
     },
 
@@ -369,7 +369,7 @@
             if($t.checked[i] === item){
               $t.checked.splice(i, 1);
             }
-          }         
+          }
         }
       }
 
@@ -384,7 +384,7 @@
 
       if(!$t)
         throw('This element is not bound to any grid instance. Check your selector and try again.');
-      
+
       for(var i = 0, k = $t.config.data.length; i < k; i++){
         if($.inArray($t.config.data[i].id, $t.checked) !== -1){
           array.push($t.config.data[i]);
