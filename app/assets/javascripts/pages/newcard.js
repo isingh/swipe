@@ -8,7 +8,7 @@ $(document).ready(function() {
     gridInfo: {
       name: 'myCards',
       headers: [{
-        name: 'Card',
+        name: 'card',
         title: 'Card No',
         sortable: true,
         default: true,
@@ -82,9 +82,29 @@ $(document).ready(function() {
     },
 
     printCardsInfo: function(data){
-      var info = cardReg.grid_info;
-      info.data = data;
-      $('#grid').grid(gridInfo);
+      var info = this.gridInfo;
+      info.data = this.structureData(data);
+      $('#nocardsmessage').hide();
+      $('#grid').grid(info).show();
+    },
+
+    structureData: function(data){
+      data = $.parseJSON(data);
+      var ret = [];
+
+      for(var i=0; i<data.length; i++){
+        ret.push({
+          id: data[i].id,
+          cells: [{
+            card: "**** **** **** "+ (data[i].last4 || "????"),
+            expiration: data[i].expiration || "",
+            brand: data[i].brand_string || "",
+            offers: data[i].offers || []
+          }]
+        });
+      }
+      console.log("ret", ret);
+      return ret;
     }
   };
 
@@ -92,6 +112,7 @@ $(document).ready(function() {
   console.log("Info", gon.new_card_info);
   cardReg.enableAddNewCard();
   if(gon.cards){
+    console.log("cards", gon.cards);
     cardReg.printCardsInfo(gon.cards);
   };
 });

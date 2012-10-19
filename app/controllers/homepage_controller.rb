@@ -20,6 +20,8 @@ class HomepageController < ApplicationController
     }
     new_card_info[:user_id] = current_user.card_spring_uid if current_user.card_spring_uid
     gon.new_card_info = new_card_info
+
+    gon.cards = current_user.user_cards.to_json
   end
 
   private
