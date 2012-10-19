@@ -1,28 +1,24 @@
 !function(window, $){
   "use strict";
 
-  $.fn.grid = function(config){
+  $.fn.grid = function(options){
 
-    config = $.extend({}, {
+    var config = $.extend({}, {
       options: {
         highlight: false,
         checkboxes: false,
         numbered: false,
         zebra: true
       }
-    }, config || {});
+    }, options || {}),
+    args = arguments;
 
     return this.each(function(){
+      var instance = $.data(this, 'grid');
 
-      // cache reference to Html element
-      var $t = $(this);
-
-      // check if instance exists
-      if($.data(this, 'grid'))
-        return;
-
-      // create new grid
-      new grid($t.get(0), config);
+      return instance ?
+        instance[options] && instance[options].apply(instance, [].slice.call(args, 1)) :
+        $.data(this, 'grid', new grid(this, config));
     });
   };
 
@@ -273,7 +269,13 @@
         $('tr:visible', $t.tbody).filter(':even').addClass('even').end().filter(':odd').addClass('odd');
       });
     },
+    reload: function(data){
+      var $t = this;
+      $t.config.data = data;
+      $t.tbody.empty();
+      $t.body();
 
+    },
     headers: function(){
       var $t = this;
 
