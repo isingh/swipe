@@ -1,5 +1,7 @@
 %html
   %head
+    %meta{:content => 'text/html; charset=utf-8', :'http-equiv' => 'Content-Type'}
+    %meta{:content => 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no', :name => 'viewport'}
     %title= (@page_title.blank? ? 'Swipe' : "#{@page_title}")
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
@@ -8,7 +10,7 @@
       = yield :page_styles
     = yield :page_head
   %body{ :class => 'thatch'}
-    #new.modal
+    #new.modal{:style => 'position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: 10px; width: auto;'}
       .modal-header
         /%button.close{"data-dismiss" => "modal", :type => "button"} ×
         %h3{ :style => 'width: 50%;'}
@@ -21,7 +23,7 @@
             .pull-left
               .brand-icon
                 %img{ :src => "assets/banana_logo.jpg"}
-            .pull-left
+            .pull-left{:style => 'width: 50%;'}
               %h4
                 Banana Republic
               %p
