@@ -52,9 +52,7 @@ $(document).ready(function() {
             exp_month: $('.expiration-month').val(),
             exp_year: $('.expiration-year').val(),
             user_id: gon.new_card_info.user_id
-          },
-          "OcGd5dea22Cs"
-          );
+          });
         return false;
       });
     },
@@ -68,8 +66,9 @@ $(document).ready(function() {
       }
 
       $.ajax({
-        url: "/user/"+gon.new_card_info.user_id+"/user_cards",
+        url: "/user_cards",
         type: 'POST',
+        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
         dataType: 'json',
         data: data,
         success: function(data, textStatus, xhr) {
