@@ -7,7 +7,7 @@ gem 'faraday'
 gem 'gon'
 gem 'haml'
 gem 'jquery-rails'
-gem 'sqlite3'
+gem 'pg'
 gem 'twilio-ruby'
 gem 'uuidtools'
 
