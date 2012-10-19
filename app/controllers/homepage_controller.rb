@@ -7,7 +7,7 @@ class HomepageController < ApplicationController
   def index
   end
 
-  def newcard
+  def cards
     timestamp = Time.now.utc.to_i
     token = security_token
 
