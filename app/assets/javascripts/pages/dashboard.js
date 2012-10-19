@@ -22,7 +22,7 @@
           purchase: '$76.50',
           savings: 'N/A',
           total: '$76.50',
-          offers: ''
+          offers: '<a data-offer="123" class="offer-btn btn btn-mini" href="javascript:void(0);">View Offer</a>'
         }]
       },{
         id: 0,
@@ -33,12 +33,13 @@
           purchase: '$92.97',
           savings: '10%',
           total: '$83.88',
-          offers: '<a data-offer="123" class="offer-btn btn btn-mini" href="javascript:void(0);">View Offer</a>'
+          offers: '#HGZ0A2444HGNZ1'
         }]
       }],
       options: {
         border: true,
-        checkbox: true,
+        checkbox: false,
+        numbered: false,
         highlight: true,
         zebra: true
       },

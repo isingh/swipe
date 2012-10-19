@@ -130,6 +130,18 @@ textarea {
   margin-left: 10px;
 }
 
+.mt5 {
+  margin-top: 5px;
+}
+
+.mt7 {
+  margin-top: 7px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
 .no-resize {
   resize: none;
 }
@@ -491,6 +503,13 @@ p small {
   font-size: 20px;
   font-weight: 200;
   line-height: 27px;
+}
+
+.lead-big {
+  margin-bottom: 22px;
+  font-size: 30px;
+  font-weight: 200;
+  line-height: 34px;
 }
 
 h1,
