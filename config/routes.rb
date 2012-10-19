@@ -1,6 +1,7 @@
 Swipe::Application.routes.draw do
   resource :user_cards, only: [:create]
   match '/user_cards/:id/add_transaction', to: 'user_cards#add_transaction', via: [:post]
+  match '/users/transactions', to: 'users#transactions'
 
   devise_for :users
 
