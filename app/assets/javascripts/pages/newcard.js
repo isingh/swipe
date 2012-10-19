@@ -26,6 +26,9 @@ $(document).ready(function() {
       },{
         name: 'offers',
         title: 'Offers'
+      },{
+        name: 'new_transaction',
+        title: 'Test'
       }],
       options: {
         border: true,
@@ -116,7 +119,8 @@ $(document).ready(function() {
             card: "**** **** **** "+ (data[i].last4 || "????"),
             expiration: data[i].expiration || "",
             brand: data[i].brand_string || "",
-            offers: data[i].offers || []
+            offers: '<a data-card="'+data[i].id+'" class="offers-btn btn btn-mini" data-toggle="modal" href="#offers">See</a>',
+            new_transaction: '<a data-card="'+data[i].id+'" class="transaction-btn btn btn-mini" data-toggle="modal" href="#new_transaction">New</a>'
           }]
         });
       }
@@ -147,11 +151,39 @@ $(document).ready(function() {
         .html(content)
         .appendTo($alert);
       $alert.prependTo('.content.container-fluid');
+    },
+
+    enableSimulateTransaction: function(){
+      $('#card_grid').on('click', '.transaction-btn', function(e){
+        $('#new_transaction').data('current_card', $(e.currentTarget).data('card'));
+      });
+
+      $('#transaction_form').submit(function(event) {
+        event.preventDefault();
+        $('.submit-button').attr('disabled', 'disabled');
+        var current_card_id = $('#new_transaction').data("current_card");
+        $.ajax({
+          url: '/user_cards/'+current_card_id+'/add_transaction',
+          type: 'POST',
+          beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+          dataType: 'json',
+          data: {amount: $("#transaction_form .amount").val()},
+          success: function(data, textStatus, xhr) {
+            console.log("OK!", data);
+          },
+          error: function(xhr, textStatus, errorThrown) {
+            console.log("WTF???");
+          }
+        });
+
+        return false;
+      });
     }
   };
 
   // Calling everything
   cardReg.enableAddNewCard();
+  cardReg.enableSimulateTransaction();
   if(gon.cards){
     cardReg.printCardsInfo(gon.cards);
   };
