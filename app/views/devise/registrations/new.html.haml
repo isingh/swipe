@@ -1,17 +1,27 @@
-%h2 Sign up
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email
-  %div
-    = f.label :password
-    %br/
-    = f.password_field :password
-  %div
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation
-  %div= f.submit "Sign up"
-= render "devise/shared/links"
+%div.cafe2
+%div.login-panel
+  %div.rel
+    %div.registration-panel
+      %p.lead
+        Exisitng members
+      %p.slogan
+        Do you already have an account with us? Then, login in already!
+      %a{ :class => 'btn', :href => new_session_path(resource_name)}
+        Sign In
+
+    %div.login-form
+      %p.lead
+        Create new account
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+        = devise_error_messages!
+        %div
+          = f.label :email
+          %input{:type => 'text', :name  => 'email', :id => 'email', :placeholder => 'user@mail.com'}
+        %div
+          = f.label :password
+          %input{:type => 'password', :name  => 'password', :id => 'password', :placeholder => 'Enter password'}
+        %div
+          = f.label :password_confirmation
+          %input{:type => 'password', :name  => 'password_confirmation', :id => 'password_confirmation', :placeholder => 'Confirm password'}
+        %button{ :class => 'btn btn-success', :type => 'submit'}
+          Ok, I'm done.
