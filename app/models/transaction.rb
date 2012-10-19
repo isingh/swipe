@@ -14,8 +14,8 @@ class Transaction < ActiveRecord::Base
     url = "http://swipeit.herokuapp.com/get_offers/text_message/#{offerwall_code}"
 
     messages = [
-        "You just spent #{amount} #{currency} at #{cs_business_name}. You are eligible for an offer.",
-        " Visit #{url}"
+        "Tapjoy Rewards - You just made a purchase at #{cs_business_name}, that qualifies for discounts!",
+        " Redeem at #{url}"
     ]
 
     messages.each do |msg|
