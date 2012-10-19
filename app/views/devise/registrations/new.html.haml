@@ -16,6 +16,12 @@
         = devise_error_messages!
         %div
           = f.label :email
+          %input{:type => 'text', :name  => 'user[first_name]', :id => 'user_first_name', :placeholder => 'Enter name'}
+        %div
+          = f.label :phone
+          %input{:type => 'text', :name  => 'user[phone_number]', :id => 'user_phone_number]', :placeholder => '(XXX) XXX-XXXX'}
+        %div
+          = f.label :email
           %input{:type => 'text', :name  => 'user[email]', :id => 'user_email', :placeholder => 'user@mail.com'}
         %div
           = f.label :password
