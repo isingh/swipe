@@ -7,22 +7,17 @@
     .span4.clearfix{:style => "position: relative;"}
       #pie{:style => "width: 200px; height: 200px; margin-top: 10px;"}
       #legend-wrap
-        %h4 Savings
+        %h4 Savings Overview
         #legend
     .span8
       .campaign-info
         %h2 My Dashboard
         %p.lead{:style => "margin-top: 5px; float: left;"}
-          Welcome to your dashboard! You can easily manager
-          %strong new
+          Welcome to your dashboard! You can easily apply
+          %strong discounts
           or
-          %strong existing
-          campaigns from this page.
-        %br
-          %p.lead.smaller
-            To create a new campaign click
-            %a{"data-toggle" => "modal", :href => "#new"} here
-            or push the "New Campaign" button.
+          %strong earn rewards
+          on your daily transactions on this screen.
     %hr
       .tabbable
         / Only required for left/right tabs
@@ -36,13 +31,12 @@
         .tab-content
           #campaigns.tab-pane.active
             .clearfix
-              %a.btn.btn-success.pull-left.mr10{"data-toggle" => "modal", :href => "#new"} New Campaign
             %section#gridCustomization{:style => "margin-top: 10px;"}
               %table#grid
           #live.tab-pane
-            %p.center You do not currently have any live campaigns.
+            %p.center You do not currently have any pending transactions.
           #inactive.tab-pane
-            %p.center You do not have any inactive campaigns.
+            %p.center There are currently no available offers.
       #deleteModal.modal.hide
         .modal-header
           %button.close{"data-dismiss" => "modal", :type => "button"} ×
