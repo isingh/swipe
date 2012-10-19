@@ -72,10 +72,13 @@ $(document).ready(function() {
         dataType: 'json',
         data: data,
         success: function(data, textStatus, xhr) {
-          cardReg.printCardsInfo(data);
+          $('#new').modal('hide');
+          cardReg.printCardsInfo(data.all_cards);
         },
         error: function(xhr, textStatus, errorThrown) {
           console.log("F**K!! There's an error!!");
+          $('#new').modal('hide');
+          alert("ERROR: "+errorThrown);
         }
       });
     },
