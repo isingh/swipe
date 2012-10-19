@@ -215,8 +215,9 @@ a:hover {
   background: url(thatch_tile.png) repeat top left;
 }
 
-.cafe {
-  background: url(background.jpg) repeat top left;
+.cafe,
+.cafe2 {
+  background: url(background1.jpg) repeat top left;
   position: fixed;
   top: 0;
   left: 0;
@@ -224,12 +225,16 @@ a:hover {
   height: 100%;
   display: block;
   background-size: 100% auto;
-  background-position: 0 0;
+  background-position: 50% 50%;
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   z-index: 1;
+}
+
+.cafe2 {
+  background: url(background.jpg) repeat bottom right;
 }
 
 .remember * {
@@ -3644,19 +3649,6 @@ input[type="submit"].btn.btn-mini {
 .tabs-right > .nav-tabs .active > a:hover {
   border-color: #ddd #ddd #ddd transparent;
   *border-left-color: #ffffff;
-}
-
-.big-logo {
-  left: 25px;
-  position: absolute;
-  top: 25px;
-}
-
-.big-logo img {
-  background: url(big_logo.png) no-repeat top left;
-  background-size: 185px 105px;
-  height: 105px;
-  width: 185px;
 }
 
 .navbar {

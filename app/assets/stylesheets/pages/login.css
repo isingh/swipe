@@ -10,12 +10,13 @@
 
 .login-panel .registration-panel {
   background: #444;
-  padding: 25px 30px 20px;
+  padding: 25px 30px 30px;
 }
 
 .login-panel .registration-panel .lead {
   color: #fff;
   text-shadow: 0 -1px 0 #111;
+  margin-bottom: 5px;
 }
 
 .login-panel .registration-panel .slogan {
@@ -26,4 +27,10 @@
 .login-form {
   padding: 25px 30px 40px;
   position: relative;
+}
+
+.swipe-logo {
+  background: url(../logo.png) no-repeat 90% 0%;
+  background-size: 100px 33px;
+  height: 33px;
 }
