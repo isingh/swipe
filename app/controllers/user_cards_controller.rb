@@ -1,10 +1,6 @@
 class UserCardsController < ApplicationController
   before_filter :authenticate_user!
 
-  def show
-    render json: current_user.user_cards.to_json
-  end
-
   def create
     user_card = current_user.user_cards.build
     user_card.token = params[:token]
@@ -16,6 +12,6 @@ class UserCardsController < ApplicationController
 
     current_user.card_spring_uid = params[:user_id] if params[:user_id].present?
     success &= current_user.save
-    render json: {success: success}.to_json
+    render json: {success: success, all_cards: current_user.user_cards}.to_json
   end
 end
