@@ -8,7 +8,7 @@
       = yield :page_styles
     = yield :page_head
   %body{ :class => 'thatch'}
-    #new.modal
+    #new.modal{:style => 'position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: 10px; width: auto;'}
       .modal-header
         /%button.close{"data-dismiss" => "modal", :type => "button"} ×
         %h3{ :style => 'width: 50%;'}
