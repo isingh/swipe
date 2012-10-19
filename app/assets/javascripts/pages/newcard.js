@@ -159,11 +159,13 @@ $(document).ready(function() {
       });
 
       $('#transaction_form').submit(function(event) {
+        event.preventDefault();
         $('.submit-button').attr('disabled', 'disabled');
         var current_card_id = $('#new_transaction').data("current_card");
-        $$.ajax({
+        $.ajax({
           url: '/user_cards/'+current_card_id+'/add_transaction',
           type: 'POST',
+          beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
           dataType: 'json',
           data: {amount: $("#transaction_form .amount").val()},
           success: function(data, textStatus, xhr) {
