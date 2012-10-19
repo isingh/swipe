@@ -16,9 +16,30 @@ module CardSpring
       Downloader.post(url, CardSpring.get_auth_tokens, data)
     end
 
-    def from_json(business_attributes)
+    def self.list_all
+      url = "#{CARD_SPRING_API_URL}/v1/apps"
+      all_apps = JSON::parse(Downloader.get(url, CardSpring.get_auth_tokens))
+
+      apps = []
+      if all_apps && all_apps["items"]
+        all_apps["items"].each do |app_attr|
+          app = self.new
+          app.from_json(app_attr)
+          apps << app
+        end
+      end
+      apps
+    end
+
+    def self.delete(app_id)
+      url = "#{CARD_SPRING_API_URL}/v1/apps/#{app_id}"
+      Downloader.delete(url, CardSpring.get_auth_tokens)
+      true
+    end
+
+    def from_json(app_attributes)
       [:id, :business_Id, :auto_connect, :notification, :redemption].each do |attr|
-        self.send("#{attr}=", business_attributes[attr.to_s]) if business_attributes[attr.to_s].present?
+        self.send("#{attr}=", app_attributes[attr.to_s]) if app_attributes[attr.to_s].present?
       end
     end
   end
