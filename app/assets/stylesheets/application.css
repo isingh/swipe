@@ -13,4 +13,5 @@
  *= require base
  *= require responsive
  *= require theme
+ *= require pages/login
  */

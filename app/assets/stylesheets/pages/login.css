@@ -1,0 +1,29 @@
+.login-panel {
+  background: #fff;
+  box-shadow: -2px 2px 2px rgba(0,0,0, .4);
+  position: absolute;
+  right: 0;
+  top: 75px;
+  width: 275px;
+  z-index: 10;
+}
+
+.login-panel .registration-panel {
+  background: #444;
+  padding: 25px 30px 20px;
+}
+
+.login-panel .registration-panel .lead {
+  color: #fff;
+  text-shadow: 0 -1px 0 #111;
+}
+
+.login-panel .registration-panel .slogan {
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.login-form {
+  padding: 25px 30px 40px;
+  position: relative;
+}
