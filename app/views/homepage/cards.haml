@@ -1,4 +1,15 @@
-%a.btn.btn-success.pull-left.mr10{"data-toggle" => "modal", :href => "#new"} Add Card
+.content.container-fluid
+  %ul.breadcrumb.plain{:style => "margin-bottom: 15px;"}
+    %li.active My Dashboard
+  .row-fluid
+    %h1.title
+      My Cards
+      %a.btn.btn-success.btn-large.pull-right.mr10{"data-toggle" => "modal", :href => "#new"} Add Card
+    %section.gridCustomization
+      %table#grid
+        %p.center You do not currently have any registered card.
+
+
 #new.modal.hide
   %form#registration_form.form-horizontal{:action => "", :method => "POST", :style => "margin-bottom: 0"}
     .modal-header
@@ -39,9 +50,6 @@
     .modal-footer
       %a.btn.btn-danger{"data-dismiss" => "modal", :href => "#"} Cancel
       %input.btn.btn-primary.submit-button{:type => "submit", :value => "Save, I'm finished"}
-
-%h2= "Your cards"
-
 
 %script{:src => "https://js.cardspring.com/v1/cs.js"}
 = include_gon
