@@ -6,7 +6,8 @@ $(document).ready(function($) {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     },
     map: null,
-    user_pos: null
+    user_pos: null,
+    markers: []
   };
     //Methods
   retailersMap.initialize = function() {
@@ -57,11 +58,79 @@ $(document).ready(function($) {
   };
 
   retailersMap.getCloserRetailers = function(){
-    console.log("Getting closer retailers for pos: ", this.user_pos.coords.latitude, this.user_pos.coords.longitude);
+    /* ----- TEST ONLY init ----- */
+    var data = [
+      {
+        name: "StarBucks",
+        coords: {
+          latitude: this.user_pos.coords.latitude,
+          longitude: this.user_pos.coords.longitude
+        }
+      }
+    ]
+
+    for(var i=0; i<20; i++){
+      var aux = {
+        name: "StarBucks #"+(i+1),
+        coords: {
+          latitude: this.user_pos.coords.latitude - 0.005 + Math.random()*0.01,
+          longitude: this.user_pos.coords.longitude - 0.005 + Math.random()*0.01
+        }
+      }
+      data.push(aux);
+    }
+
+    retailersMap.printRetailers(data);
+    return;
+    /* ----- TEST ONLY end ----- */
+
+    var lat = this.user_pos.coords.latitude;
+    var long = this.user_pos.coords.longitude;
+
+    console.log("Getting closer retailers for pos: ", lat, long);
+    $.ajax({
+      url: '/retailers',
+      type: 'POST',
+      dataType: 'json',
+      data: {lat: lat, long: long},
+      success: function(data, textStatus, xhr) {
+        console.log("OK!", data);
+        retailersMap.printRetailers(data);
+      },
+      error: function(xhr, textStatus, errorThrown) {
+        console.log("ERROR retrieving retailers");
+      }
+    });
+
   };
 
-  retailersMap.printRetailers = function(){
+  retailersMap.printRetailers = function(retailers){
+    console.log("retailers", retailers, retailers.length);
+    retailersMap.clearMarkers();
+    for (var i = 0; i < retailers.length; i++) {
+      retailersMap.markers[i] = new google.maps.Marker({
+        position: new google.maps.LatLng(retailers[i].coords.latitude, retailers[i].coords.longitude),
+        animation: google.maps.Animation.DROP
+      });
+      //google.maps.event.addListener(retailersMap.markers[i], 'click', retailersMap.getDetails(retailers[i], i));
+      setTimeout(retailersMap.dropMarker(i), i * 100);
+    }
+  };
 
+  retailersMap.dropMarker = function(i) {
+    console.log("drop", i);
+    return function() {
+      retailersMap.markers[i].setMap(retailersMap.map);
+    }
+  };
+
+  retailersMap.clearMarkers = function() {
+    for (var i = 0; i < retailersMap.markers.length; i++) {
+      if (retailersMap.markers[i]) {
+        retailersMap.markers[i].setMap(null);
+        retailersMap.markers[i] == null;
+      }
+    }
   };
 
   // Map loading
