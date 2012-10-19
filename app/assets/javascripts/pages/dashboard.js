@@ -4,81 +4,42 @@
 
     $('#grid').grid({
       name: 'myGrid',
-      headers: [{
-        name: 'name',
-        title: 'Date',
-        sortable: true
-      },{
-        name: 'offers',
-        title: 'Retailer',
-        cssCls: 'hidden-tablet hidden-phone'
-      },{
-        name: 'type',
-        title: 'Purchase',
-        cssCls: 'hidden-phone',
-        sortable: true
-      },{
-        name: 'bid',
-        title: 'Savings',
-        sortable: true,
-        type: 'number'
-      },{
-        name: 'budget',
-        title: '',
-        sortable: true,
-        type: 'number'
-      },{
-        name: 'start',
-        title: 'Starts',
-        sortable: true,
-        default: true,
-        direction: 'desc',
-        type: 'date'
-      },{
-        name: 'end',
-        title: 'Ends',
-        sortable: true,
-        cssCls: 'hidden-phone',
-        type: 'date'
-      }],
+      headers: [
+        { name: 'date',     title: 'Date',        type: 'date', sortable: true, default: true},
+        { name: 'business', title: 'Retailer',    cssCls: 'hidden-tablet hidden-phone' },
+        { name: 'desc',     title: 'Description', cssCls: 'hidden-tablet hidden-phone' },
+        { name: 'purchase', title: 'Purchase',    cssCls: 'hidden-phone', sortable: true },
+        { name: 'savings',  title: 'You Saved',   sortable: true, type: 'number' },
+        { name: 'total',    title: 'You Spent',   sortable: true, type: 'number' },
+        { name: 'offers',   title: 'Offers',      sortable: true, type: 'number' }
+      ],
       data: [{
-        id: '01235',
+        id: 0,
         cells: [{
-          name: 'New Apple',
-          offers: [['012345', 'MacBook Retina'], ['124355', 'iPhone 5']],
-          type: 'CPC',
-          bid: '$.25',
-          budget: '$4,500.00',
-          start: '07/01/2012',
-          end: '07/30/2012'
+          date: '10/14/2012',
+          business: 'The Gap',
+          desc: 'lorem ipsum de colour. lorem ipsum de colour. ',
+          purchase: '$76.50',
+          savings: 'N/A',
+          total: '$76.50',
+          offers: ''
         }]
       },{
-        id: '12232',
+        id: 0,
         cells: [{
-          name: 'Lululemon',
-          offers: [['1234', 'Mens Pro V'], ['12345', 'Womens Yoga Bag']],
-          type: 'CPA',
-          bid: '$5.00',
-          budget: '$20,000.00',
-          start: '06/21/2012',
-          end: '06/28/2012'
-        }]
-      },{
-        id: '15553',
-        cells: [{
-          name: 'Snap &amp; Sync',
-          offers: [['1234', 'Snap &amp; Sync']],
-          type: 'PPI',
-          bid: '$1.25',
-          budget: '$50,000.00',
-          start: '06/21/2012',
-          end: '06/30/2012'
+          date: '10/16/2012',
+          business: 'The Gap',
+          desc: 'lorem ipsum de colour. lorem ipsum de colour. ',
+          purchase: '$92.97',
+          savings: '10%',
+          total: '$83.88',
+          offers: '<a data-offer="123" class="offer-btn btn btn-mini" href="javascript:void(0);">View Offer</a>'
         }]
       }],
       options: {
         border: true,
         checkbox: true,
-        highlight: false,
+        highlight: true,
         zebra: true
       },
       onSelect: function(e, checked, selected){
@@ -89,32 +50,16 @@
         }else{
           $('.campaign-actions .btn').addClass('disabled');
         }
-      },
-      format: function(column, content){
-        var str = '',
-            labels =  {
-              'PPI': 'label-inverse',
-              'CPC': 'label-info',
-              'CPA': 'label-success'
-            };
-
-        if(column === 'offers'){
-          for(var i = 0, k = content.length; i < k; i++){
-            str += '<a href="offers?id='+ content[i][0] +'"><code>'+ content[i][1] +'</code></a> ';
-          }
-
-          return str;
-        }else if(column === 'type'){
-          return '<span class="label ' + labels[content] + '">' + content + '</span>';
-        }else{
-          return content;
-        }
       }
     });
 
+    $('.offer-btn').on('click', function(){
+      $('#new').modal('show');
+    });
+
     var data = [
-      { label: "Spent", data: [[1,70]]},
-      { label: "Saved", data: [[1,30]]}
+      { label: "Money Spent", data: [[1,70]]},
+      { label: "Savings", data: [[1,30]]}
     ];
 
     var config = {
