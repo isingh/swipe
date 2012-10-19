@@ -7,8 +7,8 @@
       headers: [
         { name: 'date',     title: 'Date',        type: 'date', sortable: true, default: true},
         { name: 'business', title: 'Retailer',    cssCls: 'hidden-tablet hidden-phone' },
-        { name: 'desc',     title: 'Description', cssCls: 'hidden-tablet hidden-phone' },
-        { name: 'purchase', title: 'Purchase',    cssCls: 'hidden-phone', sortable: true },
+        { name: 'desc',     title: 'What you bought', cssCls: 'hidden-tablet hidden-phone' },
+        { name: 'purchase', title: 'Price',    cssCls: 'hidden-phone', sortable: true },
         { name: 'savings',  title: 'You Saved',   sortable: true, type: 'number' },
         { name: 'total',    title: 'You Spent',   sortable: true, type: 'number' },
         { name: 'offers',   title: 'Offers',      sortable: true, type: 'number' }
