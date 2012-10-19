@@ -13,10 +13,17 @@ class Transaction < ActiveRecord::Base
     self.offerwall_code = UUIDTools::UUID.random_create.to_s.gsub('-','') unless offerwall_code
     url = "http://swipeit.herokuapp.com/get_offers/text_message/#{offerwall_code}"
 
-    Communicator.send_message(
-        '(415) 413 4641',
-        user.phone_number,
-        "You just spent #{amount} #{currency} at #{cs_business_name}. You are eligible for an offer. Visit #{Googl.shorten(url).short_url}"
-    )
+    messages = [
+        "Tapjoy Rewards - You just made a purchase at #{cs_business_name}, that qualifies for discounts!",
+        " Redeem at #{url}"
+    ]
+
+    messages.each do |msg|
+      Communicator.send_message(
+          '(415) 413 4641',
+          user.phone_number,
+          msg
+      )
+    end
   end
 end
