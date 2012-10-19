@@ -171,7 +171,6 @@ $(document).ready(function() {
           success: function(data, textStatus, xhr) {
             console.log("OK!", data);
             cardReg.throwAlert("success", "Transaction created!", "It seems that nothing happens, but your transaction is being processed and you'll receive a SMS soon");
-            cardReg.printCardsInfo(data.all_cards);
           },
           error: function(xhr, textStatus, errorThrown) {
             cardReg.throwAlert("error", "Something wrong happened...", errorThrown);
