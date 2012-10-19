@@ -16,12 +16,12 @@
         = devise_error_messages!
         %div
           = f.label :email
-          %input{:type => 'text', :name  => 'email', :id => 'email', :placeholder => 'user@mail.com'}
+          %input{:type => 'text', :name  => 'user[email]', :id => 'user_email', :placeholder => 'user@mail.com'}
         %div
           = f.label :password
-          %input{:type => 'password', :name  => 'password', :id => 'password', :placeholder => 'Enter password'}
+          %input{:type => 'password', :name  => 'user[password]', :id => 'user_password', :placeholder => 'Enter password'}
         %div
           = f.label :password_confirmation
-          %input{:type => 'password', :name  => 'password_confirmation', :id => 'password_confirmation', :placeholder => 'Confirm password'}
+          %input{:type => 'password', :name  => 'user[password_confirmation]', :id => 'user_password_confirmation', :placeholder => 'Confirm password'}
         %button{ :class => 'btn btn-success', :type => 'submit'}
           Ok, I'm done.

@@ -2,8 +2,8 @@
 %div.login-panel
   %div.rel
     %div.registration-panel
-      %p.lead.swipe-logo
-        Welcome to
+      %p.lead
+        Welcome to Swipe!
       %p.slogan
         Starting earning rewards for the things you are already doing.
       %a{ :class => 'btn btn-success', :href => new_registration_path(resource_name)}
@@ -18,10 +18,10 @@
       = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
         %div
           = f.label :email
-          %input{:type => 'text', :name  => 'email', :id => 'email', :placeholder => 'user@mail.com'}
+          %input{:type => 'text', :name  => 'user[email]', :id => 'user_email', :placeholder => 'user@mail.com'}
         %div
           = f.label :password
-          %input{:type => 'password', :name  => 'password', :id => 'password', :placeholder => 'Enter password'}
+          %input{:type => 'password', :name  => 'user[password]', :id => 'user_password', :placeholder => 'Enter password'}
         - if devise_mapping.rememberable?
           %div.remember
             = f.check_box :remember_me
