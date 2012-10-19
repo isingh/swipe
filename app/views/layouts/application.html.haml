@@ -23,10 +23,14 @@
           -  if user_signed_in?
             .nav-collapse
               %ul.nav
-                %li.active
-                  %a{:href => "index.html"} Dashboard
                 %li
-                  %a{:href => "index.html"} Payment History
+                  %a{:href => "/"} Dashboard
+                %li
+                  %a{:href => "/payment"} Payment History
+                %li
+                  %a{:href => "/cards"} My Cards
+                %li
+                  %a{:href => "/retailers"} Retailers
               %ul.nav.pull-right
                 %li.dropdown
                   %a.dropdown-toggle.no-hover{"data-toggle" => "dropdown", :href => "#"}

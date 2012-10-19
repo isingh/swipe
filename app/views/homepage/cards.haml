@@ -4,12 +4,12 @@
   .row-fluid
     %h1.title
       My Cards
-      %a.btn.btn-success.btn-large.pull-right.mr10{"data-toggle" => "modal", :href => "#new"} Add Card
-    %section.gridCustomization{:style => "margin-top: 10px;"}
+      %a.btn.btn-success.btn-large.pull-right.mr10{"data-toggle" => "modal", :href => "#new_card"} Add Card
+    %section#card_grid.gridCustomization{:style => "margin-top: 10px;"}
       %p#nocardsmessage.center You do not currently have any registered card.
       %table#grid{:style => "display: none"}
 
-#new.modal.hide
+#new_card.modal.hide
   %form#registration_form.form-horizontal{:action => "", :method => "POST", :style => "margin-bottom: 0"}
     .modal-header
       %button.close{"data-dismiss" => "modal", :type => "button"} ×
@@ -49,6 +49,20 @@
     .modal-footer
       %a.btn.btn-danger{"data-dismiss" => "modal", :href => "#"} Cancel
       %input.btn.btn-primary.submit-button{:type => "submit", :value => "Save, I'm finished"}
+
+#new_transaction.modal.hide
+  .modal-header
+    %button.close{"data-dismiss" => "modal", :type => "button"} ×
+    %h3 Simulate a new transaction
+  .modal-body
+    %form#transaction_form.form-horizontal{:action => "", :method => "POST", :style => "margin-bottom: 0"}
+      .control-group
+        .controls
+          .input-prepend.input-append
+            %span.add-on $
+            %input.amount.span2{:type => "text", :size => "16", :value => ""}
+            %button.btn.submit-button{:type => "submit"} Go!
+
 
 %script{:src => "https://js.cardspring.com/v1/cs.js"}
 = include_gon
