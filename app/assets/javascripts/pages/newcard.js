@@ -24,9 +24,6 @@ $(document).ready(function() {
         cssCls: 'hidden-tablet hidden-phone',
         sortable: true
       },{
-        name: 'offers',
-        title: 'Offers'
-      },{
         name: 'new_transaction',
         title: 'Test'
       }],
@@ -63,8 +60,8 @@ $(document).ready(function() {
     cardSpringResponseHandler: function(data){
       console.log("response", data);
       if(data.error){
-        $('#new').modal('hide');
-        cardReg.cleanForm($('#new'));
+        $('#new_card').modal('hide');
+        cardReg.cleanForm($('#new_card'));
         cardReg.throwAlert("error", "Something wrong happened...", "ERROR #"+data.error+(data.reason ? ": "+data.reason : ""));
         return false;
       }
@@ -76,14 +73,14 @@ $(document).ready(function() {
         dataType: 'json',
         data: data,
         success: function(data, textStatus, xhr) {
-          $('#new').modal('hide');
-          cardReg.cleanForm($('#new'));
+          $('#new_card').modal('hide');
+          cardReg.cleanForm($('#new_card'));
           cardReg.throwAlert("success", "Card added!", "Your card was successfully added!");
           cardReg.printCardsInfo(data.all_cards);
         },
         error: function(xhr, textStatus, errorThrown) {
-          $('#new').modal('hide');
-          cardReg.cleanForm($('#new'));
+          $('#new_card').modal('hide');
+          cardReg.cleanForm($('#new_card'));
           cardReg.throwAlert("error", "Something wrong happened...", errorThrown);
         }
       });
@@ -119,8 +116,7 @@ $(document).ready(function() {
             card: "**** **** **** "+ (data[i].last4 || "????"),
             expiration: data[i].expiration || "",
             brand: data[i].brand_string || "",
-            offers: '<a data-card="'+data[i].id+'" class="offers-btn btn btn-mini" data-toggle="modal" href="#offers">See</a>',
-            new_transaction: '<a data-card="'+data[i].id+'" class="transaction-btn btn btn-mini" data-toggle="modal" href="#new_transaction">New</a>'
+            new_transaction: '<a data-card="'+data[i].id+'" class="transaction-btn btn btn-mini" data-toggle="modal" href="#new_transaction">Fake New Trans.</a>'
           }]
         });
       }
@@ -168,11 +164,17 @@ $(document).ready(function() {
           beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
           dataType: 'json',
           data: {amount: $("#transaction_form .amount").val()},
+          complete: function(){
+            $('#new_transaction').modal('hide');
+            cardReg.cleanForm($('#new_transaction'));
+          },
           success: function(data, textStatus, xhr) {
             console.log("OK!", data);
+            cardReg.throwAlert("success", "Transaction created!", "It seems that nothing happens, but your transaction is being processed and you'll receive a SMS soon");
+            cardReg.printCardsInfo(data.all_cards);
           },
           error: function(xhr, textStatus, errorThrown) {
-            console.log("WTF???");
+            cardReg.throwAlert("error", "Something wrong happened...", errorThrown);
           }
         });
 
