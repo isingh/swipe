@@ -7,7 +7,9 @@ $(document).ready(function($) {
     },
     map: null,
     user_pos: null,
-    markers: []
+    retailers: [],
+    markers: [],
+    iw: new google.maps.InfoWindow()
   };
     //Methods
   retailersMap.initialize = function() {
@@ -22,10 +24,11 @@ $(document).ready(function($) {
 
         var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-        var infowindow = new google.maps.InfoWindow({
-          map: retailersMap.map,
+        var image = 'http://code.google.com/apis/maps/documentation/javascript/examples/images/beachflag.png';
+        var beachMarker = new google.maps.Marker({
           position: pos,
-          content: "You are here. We'll show you places to go around this place."
+          map: retailersMap.map,
+          icon: image
         });
 
         //Setting map center
@@ -59,28 +62,20 @@ $(document).ready(function($) {
 
   retailersMap.getCloserRetailers = function(){
     /* ----- TEST ONLY init ----- */
-    var data = [
-      {
-        name: "StarBucks",
-        coords: {
-          latitude: this.user_pos.coords.latitude,
-          longitude: this.user_pos.coords.longitude
-        }
-      }
-    ]
-
     for(var i=0; i<20; i++){
       var aux = {
         name: "StarBucks #"+(i+1),
+        description: "Get free coffee in any of our stablishments!",
+        img_src: "http://fc05.deviantart.net/fs71/f/2011/214/d/a/starbucks_logo_icon_by_mahesh69a-d42twe0.png",
         coords: {
           latitude: this.user_pos.coords.latitude - 0.005 + Math.random()*0.01,
           longitude: this.user_pos.coords.longitude - 0.005 + Math.random()*0.01
         }
       }
-      data.push(aux);
+      retailersMap.retailers.push(aux);
     }
 
-    retailersMap.printRetailers(data);
+    retailersMap.printRetailers();
     return;
     /* ----- TEST ONLY end ----- */
 
@@ -95,7 +90,8 @@ $(document).ready(function($) {
       data: {lat: lat, long: long},
       success: function(data, textStatus, xhr) {
         console.log("OK!", data);
-        retailersMap.printRetailers(data);
+        retailersMap.retailers = data;
+        retailersMap.printRetailers();
       },
       error: function(xhr, textStatus, errorThrown) {
         console.log("ERROR retrieving retailers");
@@ -104,21 +100,19 @@ $(document).ready(function($) {
 
   };
 
-  retailersMap.printRetailers = function(retailers){
-    console.log("retailers", retailers, retailers.length);
+  retailersMap.printRetailers = function(){
     retailersMap.clearMarkers();
-    for (var i = 0; i < retailers.length; i++) {
+    for (var i = 0; i < retailersMap.retailers.length; i++) {
       retailersMap.markers[i] = new google.maps.Marker({
-        position: new google.maps.LatLng(retailers[i].coords.latitude, retailers[i].coords.longitude),
+        position: new google.maps.LatLng(retailersMap.retailers[i].coords.latitude, retailersMap.retailers[i].coords.longitude),
         animation: google.maps.Animation.DROP
       });
-      //google.maps.event.addListener(retailersMap.markers[i], 'click', retailersMap.getDetails(retailers[i], i));
+      google.maps.event.addListener(retailersMap.markers[i], 'click', retailersMap.showInfoWindow(i));
       setTimeout(retailersMap.dropMarker(i), i * 100);
     }
   };
 
   retailersMap.dropMarker = function(i) {
-    console.log("drop", i);
     return function() {
       retailersMap.markers[i].setMap(retailersMap.map);
     }
@@ -132,6 +126,23 @@ $(document).ready(function($) {
       }
     }
   };
+
+  retailersMap.showInfoWindow = function(i) {
+    return function(){
+      retailersMap.iw.setContent(retailersMap.getIWContent(retailersMap.retailers[i]));
+      retailersMap.iw.setPosition(retailersMap.markers[i].getPosition());
+      retailersMap.iw.open(retailersMap.map);
+    }
+  };
+
+  retailersMap.getIWContent = function(retailer) {
+    var content = '<table style="border:0"><tr><td style="border:0;">';
+    content += '<img class="placeIcon" src="' + retailer.img_src + '" style="width: 50px"></td>';
+    content += '<td style="border:0;"><strong>' + retailer.name + '</strong>';
+    content += '<p>' + retailer.description + '</p>';
+    content += '</td></tr></table>';
+    return content;
+  }
 
   // Map loading
   google.maps.event.addDomListener(window, 'load', retailersMap.initialize);
