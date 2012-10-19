@@ -9,8 +9,8 @@
         { name: 'business', title: 'Retailer',    cssCls: 'hidden-tablet hidden-phone' },
         { name: 'desc',     title: 'What you bought', cssCls: 'hidden-tablet hidden-phone' },
         { name: 'purchase', title: 'Price',    cssCls: 'hidden-phone', sortable: true },
-        { name: 'savings',  title: 'You Saved',   sortable: true, type: 'number' },
-        { name: 'total',    title: 'You Spent',   sortable: true, type: 'number' },
+        { name: 'savings',  title: 'You saved',   sortable: true, type: 'number' },
+        { name: 'total',    title: 'You spent',   sortable: true, type: 'number' },
         { name: 'offers',   title: 'Offers',      sortable: true, type: 'number' }
       ],
       data: [{
