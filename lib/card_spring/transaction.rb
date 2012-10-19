@@ -2,7 +2,7 @@ require 'downloader'
 
 module CardSpring
   class Transaction
-    def self.fake_transaction(token, business_id, event_type = 'authorization', amount = 100)
+    def self.fake_transaction(token, business_id, amount = 100, event_type = 'authorization')
       url = "#{CARD_SPRING_API_URL}/v1/transactions"
 
       data = {
