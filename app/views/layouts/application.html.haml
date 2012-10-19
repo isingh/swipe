@@ -17,8 +17,9 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => "./index.html"}
-            %img.logo{:alt => "logo", :src => "data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="}/
+          %a.brand{:href => "/"}
+            %img.logo{:alt => "logo", :src => "data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="}
+
           -  if user_signed_in?
             .nav-collapse
               %ul.nav
@@ -38,6 +39,7 @@
                     %li.divider
                     %li
                       %a{:href => "/users/sign_out"} Sign Out
+
     = yield
 
     = yield :page_scripts

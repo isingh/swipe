@@ -1,0 +1,58 @@
+.content.container-fluid
+  %ul.breadcrumb.plain{:style => "margin-bottom: 15px;"}
+    %li.active My Dashboard
+  .row-fluid
+    %h1.title
+      My Cards
+      %a.btn.btn-success.btn-large.pull-right.mr10{"data-toggle" => "modal", :href => "#new"} Add Card
+    %section.gridCustomization
+      %table#grid
+        %p.center You do not currently have any registered card.
+
+
+#new.modal.hide
+  %form#registration_form.form-horizontal{:action => "", :method => "POST", :style => "margin-bottom: 0"}
+    .modal-header
+      %button.close{"data-dismiss" => "modal", :type => "button"} ×
+      %h3 Register your Credit Card
+    .modal-body
+      .control-group
+        %label.control-label Card No.
+        .controls
+          %input.card-number.input-xlarge{:type => "string", :value => ""}
+      .control-group
+        %label.control-label Expiration date
+        .controls
+          %select.expiration-month.input-small
+            %option{:value =>"1"}= "1"
+            %option{:value =>"2"}= "2"
+            %option{:value =>"3"}= "3"
+            %option{:value =>"4"}= "4"
+            %option{:value =>"5"}= "5"
+            %option{:value =>"6"}= "6"
+            %option{:value =>"7"}= "7"
+            %option{:value =>"8"}= "8"
+            %option{:value =>"9"}= "9"
+            %option{:value =>"10"}= "10"
+            %option{:value =>"11"}= "11"
+            %option{:value =>"12"}= "12"
+          %select.expiration-year.input-small
+            %option{:value => "2013"}= "2013"
+            %option{:value => "2014"}= "2014"
+            %option{:value => "2015"}= "2015"
+            %option{:value => "2016"}= "2016"
+            %option{:value => "2017"}= "2017"
+            %option{:value => "2018"}= "2018"
+            %option{:value => "2019"}= "2019"
+            %option{:value => "2020"}= "2020"
+            %option{:value => "2021"}= "2021"
+            %option{:value => "2022"}= "2022"
+    .modal-footer
+      %a.btn.btn-danger{"data-dismiss" => "modal", :href => "#"} Cancel
+      %input.btn.btn-primary.submit-button{:type => "submit", :value => "Save, I'm finished"}
+
+%script{:src => "https://js.cardspring.com/v1/cs.js"}
+= include_gon
+
+- content_for :page_scripts do
+  = javascript_include_tag('pages/newcard.js')
