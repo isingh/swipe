@@ -13,4 +13,6 @@ module CardSpring
   end
 
   autoload :Business, 'card_spring/business'
+  autoload :App, 'card_spring/app'
+  autoload :Transaction, 'card_spring/transaction'
 end

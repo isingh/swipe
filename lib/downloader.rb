@@ -8,4 +8,14 @@ class Downloader
     end
     response ? response.body : nil
   end
+
+  def self.post(url, auth = nil, data = {}, options = {})
+    url_conn = Faraday.new(url: url)
+    url_conn.basic_auth(auth[0], auth[1]) if auth
+    response = url_conn.post do |req|
+      req.body = data
+      req.options = options
+    end
+    response ? response.body : nil
+  end
 end
