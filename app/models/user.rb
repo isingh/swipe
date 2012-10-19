@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
   has_many :transactions
 
   def record_card_transaction(params)
-    card = self.user_cards.where(params[:card_token]).first
-    return unless card
+    card = self.user_cards.where(token: params[:card_token]).first
+    raise("Unable to find the card") unless card
 
     transaction = Transaction.new
     transaction.user_card           = card
@@ -29,6 +29,6 @@ class User < ActiveRecord::Base
     transaction.purchase_date_time  = params[:purchase_date_time]
     transaction.event_type          = params[:event_type]
     transaction.cs_transaction_id   = params[:transaction_id]
-    transaction.save
+    transaction.save!
   end
 end
