@@ -2,6 +2,11 @@ require 'downloader'
 
 module CardSpring
   class Business
+    ALL_ACTIVE = {
+      "PVfOTjdSbmBV" => "inStreamd, Inc.'s Test Business"
+    }
+
+
     attr_accessor :id, :name, :phone, :email, :redemption_capabilities, :notification_capabilities
 
     def self.find(business_id = nil)
