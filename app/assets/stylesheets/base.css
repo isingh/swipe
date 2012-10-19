@@ -5176,3 +5176,13 @@ a.badge:hover {
 .input-prepend .btn {
   margin-right: -5px !important;
 }
+
+.brand-icon {
+  margin-right: 10px;
+  width: 50px;
+}
+
+.brand-icon img {
+  height: 50px;
+  width: 50px;
+}
