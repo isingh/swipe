@@ -8,6 +8,7 @@ class Communicator
   def self.send_message(from, to, message_text)
     begin
       Rails.logger.info("Sending text message: #{message_text} from: #{from} to: #{to}")
+
       client.account.sms.messages.create(
         from:     from,
         to:       to,

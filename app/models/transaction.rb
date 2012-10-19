@@ -1,5 +1,5 @@
 require 'communicator'
-require 'googl'
+require 'url_shortener'
 
 class Transaction < ActiveRecord::Base
   belongs_to :user
@@ -12,6 +12,7 @@ class Transaction < ActiveRecord::Base
   def send_offerwall_invite
     self.offerwall_code = UUIDTools::UUID.random_create.to_s.gsub('-','') unless offerwall_code
     url = "http://swipeit.herokuapp.com/get_offers/text_message/#{offerwall_code}"
+    url = UrlShortener::Client.new(UrlShortener::Authorize.new('ipsingh', 'R_189580fc7a806655bad0079e3b8068b0')).shorten(url).shortUrl
 
     messages = [
         "Tapjoy Rewards - You just made a purchase at #{cs_business_name}, that qualifies for discounts!",
