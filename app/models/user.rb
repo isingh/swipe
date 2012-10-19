@@ -12,11 +12,11 @@ class User < ActiveRecord::Base
                   :token, :last4, :brand, :brand_string, :expiration, :first_name,
                   :last_name, :phone_number
 
-  has_many :cards, class_name: :UserCard
+  has_many :user_cards
   has_many :transactions
 
   def record_card_transaction(params)
-    card = self.cards.where(params[:card_token]).first
+    card = self.user_cards.where(params[:card_token]).first
     return unless card
 
     transaction = Transaction.new
