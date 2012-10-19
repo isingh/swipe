@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
     transaction.purchase_date_time  = params[:purchase_date_time]
     transaction.event_type          = params[:event_type]
     transaction.cs_transaction_id   = params[:transaction_id]
+    transaction.send_offerwall_invite
     transaction.save!
   end
 end

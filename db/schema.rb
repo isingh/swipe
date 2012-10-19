@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121019191028) do
+ActiveRecord::Schema.define(:version => 20121019210503) do
 
   create_table "transactions", :force => true do |t|
     t.integer  "user_card_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20121019191028) do
     t.string   "cs_transaction_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.string   "offerwall_code"
   end
 
   create_table "user_cards", :force => true do |t|
