@@ -5,9 +5,9 @@
     %h1.title
       My Cards
       %a.btn.btn-success.btn-large.pull-right.mr10{"data-toggle" => "modal", :href => "#new"} Add Card
-    %section.gridCustomization
-      %table#grid
-        %p.center You do not currently have any registered card.
+    %section.gridCustomization{:style => "margin-top: 10px;"}
+      %p#nocardsmessage.center You do not currently have any registered card.
+      %table#grid{:style => "display: none"}
 
 
 #new.modal.hide

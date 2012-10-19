@@ -8,7 +8,7 @@ $(document).ready(function() {
     gridInfo: {
       name: 'myCards',
       headers: [{
-        name: 'Card',
+        name: 'card',
         title: 'Card No',
         sortable: true,
         default: true,
@@ -52,9 +52,7 @@ $(document).ready(function() {
             exp_month: $('.expiration-month').val(),
             exp_year: $('.expiration-year').val(),
             user_id: gon.new_card_info.user_id
-          },
-          "OcGd5dea22Cs"
-          );
+          });
         return false;
       });
     },
@@ -68,23 +66,47 @@ $(document).ready(function() {
       }
 
       $.ajax({
-        url: "/user/"+gon.new_card_info.user_id+"/user_cards",
+        url: "/user_cards",
         type: 'POST',
+        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
         dataType: 'json',
         data: data,
         success: function(data, textStatus, xhr) {
-          cardReg.printCardsInfo(data);
+          $('#new').modal('hide');
+          cardReg.printCardsInfo(data.all_cards);
         },
         error: function(xhr, textStatus, errorThrown) {
           console.log("F**K!! There's an error!!");
+          $('#new').modal('hide');
+          alert("ERROR: "+errorThrown);
         }
       });
     },
 
     printCardsInfo: function(data){
-      var info = cardReg.grid_info;
-      info.data = data;
-      $('#grid').grid(gridInfo);
+      var info = this.gridInfo;
+      info.data = this.structureData(data);
+      $('#nocardsmessage').hide();
+      $('#grid').grid(info).show();
+    },
+
+    structureData: function(data){
+      data = $.parseJSON(data);
+      var ret = [];
+
+      for(var i=0; i<data.length; i++){
+        ret.push({
+          id: data[i].id,
+          cells: [{
+            card: "**** **** **** "+ (data[i].last4 || "????"),
+            expiration: data[i].expiration || "",
+            brand: data[i].brand_string || "",
+            offers: data[i].offers || []
+          }]
+        });
+      }
+      console.log("ret", ret);
+      return ret;
     }
   };
 
@@ -92,6 +114,7 @@ $(document).ready(function() {
   console.log("Info", gon.new_card_info);
   cardReg.enableAddNewCard();
   if(gon.cards){
+    console.log("cards", gon.cards);
     cardReg.printCardsInfo(gon.cards);
   };
 });
