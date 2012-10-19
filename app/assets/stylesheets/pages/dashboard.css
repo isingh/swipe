@@ -1,0 +1,18 @@
+ul.offers-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.offers-list li {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+ul.offers-list li:last-child {
+  border-bottom: 0;
+}
+
+ul.offers-list li .btn {
+  margin-top: 7px;
+}

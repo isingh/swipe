@@ -1,4 +1,4 @@
-- @page_title = 'Swipe - Consumer Loyalty Rewards &amp; Offers'
+- @page_title = 'Swipe - Consumer Loyalty Offers & Rewards'
 
 .content.container-fluid
   %ul.breadcrumb.plain{:style => "margin-bottom: 15px;"}
@@ -11,13 +11,13 @@
         #legend
     .span8
       .campaign-info
-        %h2 My Dashboard
-        %p.lead{:style => "margin-top: 5px; float: left;"}
-          Welcome to your dashboard! You can easily apply
+        %h2 Start saving now!
+        %p.lead.mt5.pull-left
+          Using your dashboard you can easily apply
           %strong discounts
           or
           %strong earn rewards
-          on your daily transactions on this screen.
+          on your daily transactions.
     %hr
       .tabbable
         / Only required for left/right tabs
@@ -52,72 +52,29 @@
       #new.modal.hide
         .modal-header
           %button.close{"data-dismiss" => "modal", :type => "button"} ×
-          %h3 New Campaign
-        .modal-body
-          %form.form-horizontal
-            .control-group
-              %label.control-label{:for => "input01"} Name:
-              .controls
-                %input#input01.input-xlarge{:type => "text"}
-            .control-group
-              %label.control-label{:for => "input01"} Offer Type:
-              .controls
-                .btn-group.dropdown
-                  %button.btn Choose...
-                  %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
-                    %span.caret
-                  %ul.dropdown-menu
-                    %li
-                      %a{:href => "#"} Cost-per-acquistion (CPA)
-                    %li
-                      %a{:href => "#"} Cost-per-click (CPC)
-                    %li
-                      %a{:href => "#"} Pay-per-install (PPI)
-            .control-group.form-inline
-              %label.control-label{:for => "input01"} Starts:
-              .controls
-                .input-prepend
-                  %span.add-on
-                    %i.icon-calendar
-                  %input#start.input-small{:name => "start", :placeholder => "01/01/2012", :size => "4", :type => "text"}
-                %label.ml10.mr10{:for => "input01"} Ends:
-                .input-prepend
-                  %span.add-on
-                    %i.icon-calendar
-                  %input#end.input-small{:name => "end", :placeholder => "01/01/2012", :size => "4", :type => "text"}
-            .control-group
-              %label.control-label{:for => "input01"} Budget:
-              .controls
-                .input-prepend.input-append
-                  %span.add-on $
-                  %input#budget.span3{:name => "budget", :placeholder => "100", :style => "text-align: right;", :type => "text"}
-                    %span.add-on{:style => "border-top-right-radius: 4px;  border-bottom-right-radius: 4px;"} .00
-                    %i.btn.btn-danger{"data-content" => "If you exhaust your budget before the campaign expires we will attempt to process an <b>additional 15%.</b>", "data-original-title" => "Campaign Budget", "data-placement" => "right", :href => "#", :rel => "popover", :style => "margin-top: 3px; opacity: .5;  cursor: help;"}
-            .control-group
-              %label.control-label{:for => "input01"} Bid:
-              .controls
-                .input-prepend.input-append
-                  %span.add-on $
-                  %input#budget.span3{:name => "budget", :placeholder => ".25", :style => " border-top-right-radius: 4px;  border-bottom-right-radius: 4px;", :type => "text"}
-                    %i.btn.btn-danger{"data-content" => "The bid price to enter here will influence the level of engagement your offer(s) will receive.", "data-original-title" => "Bid Price", "data-placement" => "right", :href => "#", :rel => "popover", :style => "margin-top: 3px; opacity: .5; cursor: help;"}
-            .control-group
-              %label.control-label Offers:
-              .controls
-                %div
-                  %input{"data-items" => "4", "data-provide" => "typeahead", "data-source" => "", :type => "text"}
-                    %i.btn.btn-danger{"data-content" => "Type in the name of the offer(s) you would like to add to this campaign and select it from the results list.", "data-original-title" => "Add Offers", "data-placement" => "right", :href => "#", :rel => "popover", :style => "margin-top: 3px; opacity: .5; cursor: help;"}
-                %div{:style => "border-top: 1px solid #eee; padding-top: 18px; margin-top: 18px; position: relative;"}
-                  %div{:style => "position: absolute; top: -9px; left: 10px; background: #fff; padding: 0 3px; font: italic 12px Georgia; color: #999;"} Selected Offers
-                  %code
-                    %i.icon-remove.offer-item>
-                    MacBook Pro
-            .control-group
-              %label.control-label{:for => "input01"} Active:
-              .controls
-                %span.mycheckbox.checked
+          %h3 Available Rewards & Offers
+        .modal-body{:style => 'padding: 0;'}
+          %ul.offers-list
+            %li.clearfix
+              .pull-left
+                %h4
+                  Banana Republic
+                %p
+                  Save 50% off your next purchase of $50 or more!
+              .pull-right
+                .btn.btn-success
+                  Use Offer
+            %li.clearfix
+              .pull-left
+                %h4
+                  The Gap
+                %p
+                  Apply 10% off to this purchase
+              .pull-right
+                .btn.btn-success
+                  Use Offer
         .modal-footer
           %a.btn{"data-dismiss" => "modal", :href => "#"} Cancel
-          %a.btn.btn-primary{:href => "#"} Save, I'm finished
 
 - content_for :page_scripts do
   = javascript_include_tag('charting/jquery.flot.js')
