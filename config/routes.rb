@@ -1,5 +1,5 @@
 Swipe::Application.routes.draw do
-  resource :user_cards, only: [:create, :show]
+  resource :user_cards, only: [:create]
 
   devise_for :users
 
