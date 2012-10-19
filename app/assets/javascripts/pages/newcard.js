@@ -58,10 +58,11 @@ $(document).ready(function() {
     },
 
     cardSpringResponseHandler: function(data){
-      console.log("getting", data);
-
+      console.log("response", data);
       if(data.error){
-        alert("ERROR #"+data.error+": "+data.reason);
+        $('#new').modal('hide');
+        cardReg.cleanForm($('#new'));
+        cardReg.throwAlert("error", "Something wrong happened...", "ERROR #"+data.error+(data.reason ? ": "+data.reason : ""));
         return false;
       }
 
@@ -78,9 +79,9 @@ $(document).ready(function() {
           cardReg.printCardsInfo(data.all_cards);
         },
         error: function(xhr, textStatus, errorThrown) {
-          console.log("F**K!! There's an error!!");
           $('#new').modal('hide');
-          alert("ERROR: "+errorThrown);
+          cardReg.cleanForm($('#new'));
+          cardReg.throwAlert("error", "Something wrong happened...", errorThrown);
         }
       });
     },
@@ -91,11 +92,14 @@ $(document).ready(function() {
       info.data = this.structureData(data);
       if(info.data.length > 0){
         $('#nocardsmessage').hide();
-        $grid.removeData('grid').empty();
+
         if($.type(data) == "string")
           $grid.grid(info);
-        else
-          $grid.grid('reload',info);
+        else{
+          console.log("reloading", info.data);
+          $grid.grid('reload', info.data);
+        }
+
         $grid.show();
       }
     },
@@ -125,14 +129,24 @@ $(document).ready(function() {
     },
 
     throwAlert: function(type, title, content){
-      var $alert = $('#alertblock');
+      var $alert = $('<div>');
       $alert
-        .removeClass()
-        .addClass("alert alert-block alert-"+type)
-        .find('.title')
-          .html(title);
-      $alert.find('.content').html(content);
-      $alert.alert();
+        .attr('id','alertblock')
+        .addClass("alert alert-block fade in alert-"+type)
+        .attr('style',"margin-top: 10px");
+      $('<button>')
+        .addClass('close')
+        .attr('data-dismiss','alert')
+        .html("×")
+        .appendTo($alert);
+      $('<h4>')
+        .addClass('alert-heading')
+        .html(title)
+        .appendTo($alert);
+      $('<p>')
+        .html(content)
+        .appendTo($alert);
+      $alert.prependTo('.content.container-fluid');
     }
   };
 
