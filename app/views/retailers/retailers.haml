@@ -1,0 +1,25 @@
+%style
+  :plain
+    .content.container-fluid{
+      padding: 0;
+    }
+
+    #searchbox {
+      position: absolute;
+      z-index: 100;
+    }
+
+    #map img {
+      max-width: none;
+    }
+
+.content.container-fluid
+  #searchbox
+    %h1
+      Hello!
+  #map
+
+%script{:src => "http://maps.googleapis.com/maps/api/js?key=AIzaSyAbVU6r4eUcGLrvbCYRl6a9lueOY_txegc&sensor=true"}
+
+- content_for :page_scripts do
+  = javascript_include_tag('pages/retailers_map.js')
