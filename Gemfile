@@ -5,11 +5,11 @@ gem 'rails', '3.2.8'
 gem 'devise'
 gem 'faraday'
 gem 'gon'
-gem 'googl'
 gem 'haml'
 gem 'jquery-rails'
 gem 'pg'
 gem 'twilio-ruby'
+gem 'url_shortener'
 gem 'uuidtools'
 
 group :assets do
