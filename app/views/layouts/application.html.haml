@@ -10,9 +10,6 @@
       = yield :page_styles
     = yield :page_head
   %body{ :class => 'thatch'}
-    %p.notice= @notice
-    %p.alert= @alert
-
     .navbar.navbar-fixed-top
       .navbar-inner
         .container-fluid
@@ -22,24 +19,25 @@
             %span.icon-bar
           %a.brand{:href => "./index.html"}
             %img.logo{:alt => "logo", :src => "data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="}/
-          .nav-collapse
-            %ul.nav
-              %li
-                %a{:href => "index.html"} Dashboard
-              %li
-                %a{:href => "index.html"} Payment History
-            %ul.nav.pull-right
-              %li.dropdown
-                %a.dropdown-toggle.no-hover{"data-toggle" => "dropdown", :href => "#"}
-                  You are logged in as
-                  %span.white Kieran Boyle
-                  %b.caret
-                %ul.dropdown-menu
-                  %li
-                    %a{:href => "#"} My Account
-                  %li.divider
-                  %li
-                    %a{:href => "/users/sign_out"} Sign Out
+          -  if user_signed_in?
+            .nav-collapse
+              %ul.nav
+                %li
+                  %a{:href => "index.html"} Dashboard
+                %li
+                  %a{:href => "index.html"} Payment History
+              %ul.nav.pull-right
+                %li.dropdown
+                  %a.dropdown-toggle.no-hover{"data-toggle" => "dropdown", :href => "#"}
+                    You are logged in as
+                    %span.white Kieran Boyle
+                    %b.caret
+                  %ul.dropdown-menu
+                    %li
+                      %a{:href => "#"} My Account
+                    %li.divider
+                    %li
+                      %a{:href => "/users/sign_out"} Sign Out
     = yield
 
     = yield :page_scripts
