@@ -7,4 +7,5 @@ Swipe::Application.routes.draw do
   root to: 'homepage#index'
   match '/cards', to: 'homepage#cards'
   match '/card_spring/callback', to: 'card_spring#callback', via: [:post]
+  match '/offerwall', to: 'offerwall#offerwall'
 end
