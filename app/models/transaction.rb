@@ -1,4 +1,5 @@
 require 'communicator'
+require 'googl'
 
 class Transaction < ActiveRecord::Base
   belongs_to :user
@@ -15,7 +16,7 @@ class Transaction < ActiveRecord::Base
     Communicator.send_message(
         '+14154134641',
         user.phone_number,
-        "You just spent #{amount} at #{cs_business_name}. You are eligible for an offer. Visit #{url}"
+        "You just spent #{amount} #{currency} at #{cs_business_name}. You are eligible for an offer. Visit #{Googl.shorten(url).short_url}"
     )
   end
 end

@@ -3,7 +3,7 @@ require 'downloader'
 module CardSpring
   class Business
     ALL_ACTIVE = {
-      "PVfOTjdSbmBV" => "inStreamd, Inc.'s Test Business"
+      "PVfOTjdSbmBV" => "Gap Inc."
     }
 
 
