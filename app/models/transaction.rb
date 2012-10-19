@@ -14,7 +14,7 @@ class Transaction < ActiveRecord::Base
     url = "http://swipeit.herokuapp.com/get_offers/text_message/#{offerwall_code}"
 
     Communicator.send_message(
-        '+14154134641',
+        '(415) 413 4641',
         user.phone_number,
         "You just spent #{amount} #{currency} at #{cs_business_name}. You are eligible for an offer. Visit #{Googl.shorten(url).short_url}"
     )
