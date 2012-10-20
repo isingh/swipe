@@ -2,10 +2,7 @@ class GetOffersController < ApplicationController
   def text_message
     @all_offers = []
     transaction = Transaction.find_by_offerwall_code(params[:offerwall_code])
-
     @error = "No such transaction" unless transaction
-
-    Rails.logger.info("@@@@@@@@@@@@@@@@@@@@@@#{@error}")
     return if @error
 
 
