@@ -23,3 +23,4 @@
 //= require bootstrap-carousel
 //= require bootstrap-typeahead
 //= require bootstrap-grid
+//= require combo

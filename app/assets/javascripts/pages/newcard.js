@@ -9,23 +9,23 @@ $(document).ready(function() {
       name: 'myCards',
       headers: [{
         name: 'card',
-        title: 'Card No',
+        title: 'Card Number',
         sortable: true,
         default: true,
         direction: 'desc'
       },{
         name: 'expiration',
-        title: 'Expiration Date',
+        title: 'Expiration',
         cssCls: 'hidden-tablet hidden-phone',
         type: 'date'
       },{
         name: 'brand',
-        title: 'Brand',
+        title: 'Type',
         cssCls: 'hidden-tablet hidden-phone',
         sortable: true
       },{
         name: 'new_transaction',
-        title: 'Test'
+        title: 'Simulate'
       }],
       options: {
         border: true,
@@ -33,6 +33,13 @@ $(document).ready(function() {
         highlight: false,
         zebra: true
       },
+      onSelect: function(e, checked, selected){
+        if(selected.length == 1){
+          $('#remove-card').removeClass('disabled');
+        }else{
+          $('#remove-card').addClass('disabled');
+        }
+      }
     },
 
     enableAddNewCard: function() {
@@ -48,9 +55,10 @@ $(document).ready(function() {
             test_mode: gon.new_card_info.test_mode
           },
           {
-            card_number: $('.card-number').val(),
-            exp_month: $('.expiration-month').val(),
-            exp_year: $('.expiration-year').val(),
+            card_number: $('#card-number').val(),
+            exp_month: $('#exp-month').val(),
+            exp_year: $('#exp-year').val(),
+            cvv2: $('#cvv2').val(),
             user_id: gon.new_card_info.user_id
           });
         return false;
@@ -75,7 +83,7 @@ $(document).ready(function() {
         success: function(data, textStatus, xhr) {
           $('#new_card').modal('hide');
           cardReg.cleanForm($('#new_card'));
-          cardReg.throwAlert("success", "Card added!", "Your card was successfully added!");
+          cardReg.throwAlert("success", "Success!", "Your card has been linked successfully!");
           cardReg.printCardsInfo(data.all_cards);
         },
         error: function(xhr, textStatus, errorThrown) {
@@ -116,7 +124,7 @@ $(document).ready(function() {
             card: "**** **** **** "+ (data[i].last4 || "????"),
             expiration: data[i].expiration || "",
             brand: data[i].brand_string || "",
-            new_transaction: '<a data-card="'+data[i].id+'" class="transaction-btn btn btn-mini" data-toggle="modal" href="#new_transaction">Fake New Trans.</a>'
+            new_transaction: '<a data-card="'+data[i].id+'" class="transaction-btn btn btn-mini" data-toggle="modal" href="#new_transaction">Simulate Transaction</a>'
           }]
         });
       }
@@ -124,7 +132,7 @@ $(document).ready(function() {
     },
 
     cleanForm: function($form){
-      $form.find('.card-number').val('');
+      $form.find('#card-number').val('');
       $form.find('.submit-button').removeAttr('disabled');
     },
 
@@ -146,7 +154,7 @@ $(document).ready(function() {
       $('<p>')
         .html(content)
         .appendTo($alert);
-      $alert.prependTo('.content.container-fluid');
+      $alert.prependTo('#error');
     },
 
     enableSimulateTransaction: function(){
@@ -170,7 +178,7 @@ $(document).ready(function() {
           },
           success: function(data, textStatus, xhr) {
             console.log("OK!", data);
-            cardReg.throwAlert("success", "Transaction created!", "It seems that nothing happens, but your transaction is being processed and you'll receive a SMS soon");
+            cardReg.throwAlert("success", "Transaction created!", "Your transactions has been simulated and is being processed. You'll receive an SMS shortly.");
           },
           error: function(xhr, textStatus, errorThrown) {
             cardReg.throwAlert("error", "Something wrong happened...", errorThrown);
