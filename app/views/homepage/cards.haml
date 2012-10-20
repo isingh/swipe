@@ -1,11 +1,27 @@
 .content.container-fluid
-  %ul.breadcrumb.plain{:style => "margin-bottom: 15px;"}
-    %li.active My Dashboard
+  %ul.breadcrumb.plain
+    %li.active My Cards
+
+  #error
+
+  %h2
+    Card Manager
+  %p.lead
+    The card manager makes it easy for you to link your credit and/or debit cards.
+  %p
+    To begin, click <b>Link Card</b>.
+
+  %hr
+
+  .row-fluid.mt10
+    .pull-left
+      %a.btn.btn-success{"data-toggle" => "modal", :href => "#new_card"} Link Card
+    .pull-right
+      %a#remove-card.btn.disabled
+        Unlink Card
+
   .row-fluid
-    %h1.title
-      My Cards
-      %a.btn.btn-success.btn-large.pull-right.mr10{"data-toggle" => "modal", :href => "#new_card"} Add Card
-    %section#card_grid.gridCustomization{:style => "margin-top: 10px;"}
+    %section#card_grid.mt10
       %p#nocardsmessage.center You do not currently have any registered card.
       %table#grid{:style => "display: none"}
 
@@ -13,42 +29,37 @@
   %form#registration_form.form-horizontal{:action => "", :method => "POST", :style => "margin-bottom: 0"}
     .modal-header
       %button.close{"data-dismiss" => "modal", :type => "button"} ×
-      %h3 Register your Credit Card
+      %h3 Card Information
     .modal-body
-      .control-group
-        %label.control-label Card No.
+      .control-group.mt10
+        %label.control-label Card Number
         .controls
-          %input.card-number.input-xlarge{:type => "text", :value => ""}
+          %input#card-number.input-xlarge{:type => "text", :maxlength => '16', :value => ''}
       .control-group
-        %label.control-label Expiration date
+        %label.control-label
+          Exp. Month
         .controls
-          %select.expiration-month.input-small
-            %option{:value =>"1"}= "1"
-            %option{:value =>"2"}= "2"
-            %option{:value =>"3"}= "3"
-            %option{:value =>"4"}= "4"
-            %option{:value =>"5"}= "5"
-            %option{:value =>"6"}= "6"
-            %option{:value =>"7"}= "7"
-            %option{:value =>"8"}= "8"
-            %option{:value =>"9"}= "9"
-            %option{:value =>"10"}= "10"
-            %option{:value =>"11"}= "11"
-            %option{:value =>"12"}= "12"
-          %select.expiration-year.input-small
-            %option{:value => "2013"}= "2013"
-            %option{:value => "2014"}= "2014"
-            %option{:value => "2015"}= "2015"
-            %option{:value => "2016"}= "2016"
-            %option{:value => "2017"}= "2017"
-            %option{:value => "2018"}= "2018"
-            %option{:value => "2019"}= "2019"
-            %option{:value => "2020"}= "2020"
-            %option{:value => "2021"}= "2021"
-            %option{:value => "2022"}= "2022"
+          .form-inline
+            %input.input-extra-mini#exp-month{:type => 'text'}
+            %label
+            &nbsp; Exp. Year &nbsp;
+            %input.input-extra-mini#exp-year{:type => 'text'}
+      .control-group
+        %label.control-label
+          CVV2
+        .controls
+          %input.input-mini#cvv2{:type => 'text', :maxlength => '3'}
+          %i{:class => 'icon-question-sign', :style => 'margin-top: 3px; opacity: .5;  cursor: help;', :'data-placement' => 'right', :'data-original-title' => 'CVV2', :rel => 'popover', :'data-content' => 'The CVV2 is a three digit number located on the backside of your card.'}
+      .control-group
+        %label.control-label
+        .controls
+          %label.checkbox
+            %input{:type => 'checkbox', :checked => 'true'}
+            Use address on account
+
     .modal-footer
-      %a.btn.btn-danger{"data-dismiss" => "modal", :href => "#"} Cancel
-      %input.btn.btn-primary.submit-button{:type => "submit", :value => "Save, I'm finished"}
+      %a.btn{'data-dismiss' => 'modal', :href => '#'} Cancel
+      %input.btn.btn-success.submit-button{:type => "submit", :value => "Yes, I'm finished"}
 
 #new_transaction.modal.hide
   .modal-header
@@ -66,6 +77,46 @@
 
 %script{:src => "https://js.cardspring.com/v1/cs.js"}
 = include_gon
+
+:javascript
+  $(function(){
+    $('*[rel="popover"]').popover();
+    $('#cvv2').val('');
+    $('#exp-month').combo({
+      items: [
+        { text:  '01', value: '01', selected: true },
+        { text:  '02', value: '02' },
+        { text:  '03', value: '03' },
+        { text:  '04', value: '04' },
+        { text:  '05', value: '05' },
+        { text:  '06', value: '06' },
+        { text:  '07', value: '07' },
+        { text:  '08', value: '08' },
+        { text:  '09', value: '09' },
+        { text:  '10', value: '10' },
+        { text:  '11', value: '11' },
+        { text:  '12', value: '12' }
+      ]
+    });
+
+    $('#exp-year').combo({
+      items: [
+        { text:  '2013', value: '2013', selected: true },
+        { text:  '2014', value: '2014' },
+        { text:  '2015', value: '2015' },
+        { text:  '2016', value: '2016' },
+        { text:  '2017', value: '2017' },
+        { text:  '2018', value: '2018' },
+        { text:  '2019', value: '2019' },
+        { text:  '2020', value: '2020' },
+        { text:  '2021', value: '2021' },
+        { text:  '2022', value: '2022' },
+        { text:  '2023', value: '2023' },
+        { text:  '2024', value: '2024' }
+      ]
+    })
+
+  });
 
 - content_for :page_scripts do
   = javascript_include_tag('pages/newcard.js')

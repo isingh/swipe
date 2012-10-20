@@ -142,6 +142,10 @@ textarea {
   margin-top: 10px;
 }
 
+.mb10 {
+  margin-bottom: 10px;
+}
+
 .no-resize {
   resize: none;
 }
@@ -1020,6 +1024,10 @@ input[type="checkbox"]:focus {
 .radio.inline + .radio.inline,
 .checkbox.inline + .checkbox.inline {
   margin-left: 10px;
+}
+
+.input-extra-mini {
+  width: 30px;
 }
 
 .input-mini {
@@ -2498,7 +2506,7 @@ table .span24 {
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 160px;
+  min-width: 70px;
   padding: 4px 0;
   margin: 1px 0 0;
   list-style: none;
