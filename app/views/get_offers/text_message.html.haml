@@ -1,37 +1,32 @@
-= "this is awesome"
-= "this is awesome"
-= "this is awesome"
-= "this is awesome"
+- content_for :page_head do
+  %meta{:content => 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no', :name => 'viewport'}
 
 #new.modal{:style => 'position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: 10px; width: auto;'}
   .modal-header
-    %h3{ :style => 'width: 50%;'}
-      Available Rewards
-      .lead{:style => 'font-size: 14px; height: 18px; position: absolute; right: 15px; top: 8px;'}
-        Expires in 23:04:30
-  .modal-body{:style => 'padding: 0;'}
-    %ul.offers-list
-      %li.clearfix
-        .pull-left
-          .brand-icon
-            %img{ :src => "/assets/banana_logo.jpg"}
-        .pull-left
-          %h4
-            Banana Republic
-          %p
-            Save 50% off your next purchase of $50 or more!
-        .pull-right
-          .btn.btn-success
-            Redeem
-      %li.clearfix
-        .pull-left
-          .brand-icon
-            %img{ :src => "assets/gap_logo.jpg"}
-        .pull-left
-          %h4
-            The Gap
-          %p
-            Apply 10% off to this purchase
-        .pull-right
-          .btn.btn-success
-            Redeem
+    - if @error.present?
+      %h3
+        = "Error: #{@error}"
+    - elsif @time_to_expiry < 0
+      %h3
+        = "Sorry the link has expired"
+    - else
+      /%button.close{"data-dismiss" => "modal", :type => "button"} ×
+      %h3{ :style => 'width: 50%;'}
+        Available Rewards
+        .lead{:style => 'font-size: 14px; height: 18px; position: absolute; right: 15px; top: 8px;'}
+          Expires in #{Time.at(@time_to_expiry).gmtime.strftime("%R:%S")}
+    .modal-body{:style => 'padding: 0;'}
+      - @all_offers.each do |offer|
+        %ul.offers-list
+          %li.clearfix
+            .pull-left
+              .brand-icon
+                %img{ src: offer.url }
+            .pull-left{:style => 'width: 50%;'}
+              %h4
+                = "#{offer.name}"
+              %p
+                = "#{offer.description}"
+            .pull-right
+              .btn.btn-success
+                Redeem
