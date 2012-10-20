@@ -5,10 +5,11 @@
     $('#grid').grid({
       name: 'myGrid',
       headers: [
-        { name: 'date',     title: 'Date',        type: 'date', sortable: true, default: true},
-        { name: 'business', title: 'Retailer',    cssCls: 'hidden-tablet hidden-phone' },
-        { name: 'desc',     title: 'What you bought', cssCls: 'hidden-tablet hidden-phone' },
-        { name: 'purchase', title: 'Price',    cssCls: 'hidden-phone', sortable: true },
+        { name: 'card',     title: 'Card Number',            cssCls: 'hidden-tablet hidden-phone' },
+        { name: 'date',     title: 'Date',        type: 'date', sortable: true, default: true, direction:'desc'},
+        { name: 'business', title: 'Retailer',        cssCls: 'hidden-tablet hidden-phone' },
+        // { name: 'desc',     title: 'What you bought', cssCls: 'hidden-tablet hidden-phone' },
+        { name: 'purchase', title: 'Price',           cssCls: 'hidden-phone', sortable: true },
         { name: 'savings',  title: 'You saved',   sortable: true, type: 'number' },
         { name: 'total',    title: 'You spent',   sortable: true, type: 'number' },
         { name: 'offers',   title: 'Offers',      sortable: true, type: 'number' }
@@ -16,9 +17,10 @@
       data: [{
         id: 0,
         cells: [{
+          card: '**** **** **** 4343',
           date: '10/14/2012',
           business: 'The Gap',
-          desc: 'lorem ipsum de colour. lorem ipsum de colour. ',
+          //desc: 'lorem ipsum de colour. lorem ipsum de colour. ',
           purchase: '$76.50',
           savings: 'N/A',
           total: '$76.50',
@@ -27,9 +29,10 @@
       },{
         id: 0,
         cells: [{
+          card: '**** **** **** 0221',
           date: '10/16/2012',
           business: 'The Gap',
-          desc: 'lorem ipsum de colour. lorem ipsum de colour. ',
+          //desc: 'lorem ipsum de colour. lorem ipsum de colour. ',
           purchase: '$92.97',
           savings: '10%',
           total: '$83.88',
@@ -42,15 +45,6 @@
         numbered: false,
         highlight: true,
         zebra: true
-      },
-      onSelect: function(e, checked, selected){
-        if(selected.length == 1){
-          $('.campaign-actions .btn').removeClass('disabled');
-        }else if(selected.length >= 2){
-          $('#edit').addClass('disabled');
-        }else{
-          $('.campaign-actions .btn').addClass('disabled');
-        }
       }
     });
 
