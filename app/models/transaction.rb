@@ -15,7 +15,7 @@ class Transaction < ActiveRecord::Base
     url = UrlShortener::Client.new(UrlShortener::Authorize.new('ipsingh', 'R_189580fc7a806655bad0079e3b8068b0')).shorten(url).shortUrl
 
     messages = [
-        "Tapjoy Rewards - You just made a purchase at #{cs_business_name}, that qualifies for discounts!",
+        "Tapjoy Rewards - You just made a purchase at #{cs_business_name} that qualifies for discounts!",
         " Redeem at #{url}"
     ]
 
