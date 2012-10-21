@@ -53,16 +53,19 @@
     });
 
     var data = [
-      { label: "Money Spent", data: [[1,70]]},
-      { label: "Savings", data: [[1,30]]}
+      { label: "Money Spent", data: [[1,198.50]]},
+      { label: "Savings", data: [[1,32.75]]}
     ];
 
     var config = {
-      colors: ['#FFAE45', '#79C2F5', '#014C81', '#46ACF5'],
+      colors: ['#444', '#FFAE45'], //['#FFAE45', '#79C2F5', '#014C81', '#46ACF5'],
       series: {
         pie: {
           show: true
         }
+      },
+      grid: {
+        hoverable: true
       },
       legend: {
         labelBoxBorderColor: 'none',
@@ -74,36 +77,49 @@
       }
     };
 
-    $('#delete, #deactive').on('click', function(){
-      var btn = $(this);
-
-      if(btn.hasClass('disabled'))
-        return;
-
-      var selected = $('#grid').getSelected(),
-          msg = '',
-          count = 1,
-          length = selected.length,
-          connector = length == 2 ? ' & ' : ', ',
-          plural = length > 1 ? 's' : '';
-
-        for(var row in selected){
-         msg += '"<b>' + selected[row].cells[0].name + '</b>"' + (length == 1 || count == length ? '' : connector);
-         count++;
-        }
-
-        if(btn.attr('id') === 'delete'){
-          $('#deleteModal').find('h3').html('Delete Campaign'+plural).end().find('.modal-body').html('<p>Are you sure you want to remove the campaign' + plural + ' '+msg+'?</p>');
-        }else{
-          $('#deleteModal').find('h3').html('Deactivate Campaign'+plural).end().find('.modal-body').html('<p>Are you sure you want to deactivate the campaign' + plural + ' '+msg+'?</p>');
-
-        }
-
-      $('#deleteModal').modal();
-    });
-
     $.plot($("#pie"), data, config);
 
+
+    $('#pie').bind('plothover', function (event, pos, item) {
+
+      if(item){
+        showTooltip({
+          msg: '<b>$'+parseFloat(item.datapoint[1][0][1]).toFixed(2) + '</b> - ' + item.series.label,
+          left: Math.floor(pos.pageX),
+          top:  Math.floor(pos.pageY + 30)
+        });
+      }else{
+        $('#tooltip').empty().remove();
+      }
+    });
+
+function showTooltip(config){
+
+  if($('#tooltip').length == 0){
+    var tooltip = $(document.createElement('div'));
+    tooltip.attr('id', 'tooltip');
+
+    $(document.body).append(tooltip);
+  }
+
+    var left = config.left,
+        maxWidth = $(window).width() + $(document).scrollLeft(),
+        width = 240,
+        oLeft = maxWidth < (left + width) ? left - width - 5 : left + 5;
+
+    $('#tooltip').html('<div>'+config.msg+'</div>')
+    .css({
+      position: 'absolute',
+      left: oLeft+ 'px',
+      top: config.top+ 'px',
+      'background-color': 'rgba(0,0,0, .75)',
+      color: '#fff',
+      padding: '10px',
+      'border-radius': '5px'
+    })
+    .show();
+
+}
     $(window).resize(function(){
       $.plot($("#pie"), data, config);
     })

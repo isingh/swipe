@@ -30,7 +30,7 @@ $(document).ready(function() {
       options: {
         border: true,
         checkbox: true,
-        highlight: false,
+        highlight: true,
         zebra: true
       },
       onSelect: function(e, checked, selected){
