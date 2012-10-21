@@ -20,7 +20,6 @@
           card: '**** **** **** 4343',
           date: '10/14/2012',
           business: 'The Gap',
-          //desc: 'lorem ipsum de colour. lorem ipsum de colour. ',
           purchase: '$76.50',
           savings: 'N/A',
           total: '$76.50',
@@ -30,13 +29,23 @@
         id: 0,
         cells: [{
           card: '**** **** **** 0221',
-          date: '10/16/2012',
+          date: '10/15/2012',
           business: 'The Gap',
-          //desc: 'lorem ipsum de colour. lorem ipsum de colour. ',
           purchase: '$92.97',
           savings: '10%',
           total: '$83.88',
           offers: '#HGZ0A2444HGNZ1'
+        }]
+      },{
+        id: 0,
+        cells: [{
+          card: '**** **** **** 5311',
+          date: '10/16/2012',
+          business: 'Starbucks',
+          purchase: '$10.42',
+          savings: '$1.42',
+          total: '$9.00',
+          offers: '#DFCC444HGPQ301'
         }]
       }],
       options: {
@@ -51,6 +60,45 @@
     $('.offer-btn').on('click', function(){
       $('#new').modal('show');
     });
+
+    $('.redeem-btn').on('click', function(){
+      $('#new').modal('hide');
+      $('#completed').modal('show');
+    });
+
+    $('.redeem-netflix').on('click', function(){
+      $('#new').modal('hide');
+      $('#interstitial').modal('show');
+    });
+
+    $('#completed_offer').on('click', function(){
+      $('#grid').grid('reload', [{
+        id: 0,
+        cells: [{
+          card: '**** **** **** 4343',
+          date: '10/14/2012',
+          business: 'The Gap',
+          //desc: 'lorem ipsum de colour. lorem ipsum de colour. ',
+          purchase: '$76.50',
+          savings: '5%',
+          total: '$72.61',
+          offers: '#PV34AC0ZS23HH'
+        }]
+      },{
+        id: 0,
+        cells: [{
+          card: '**** **** **** 0221',
+          date: '10/16/2012',
+          business: 'The Gap',
+          //desc: 'lorem ipsum de colour. lorem ipsum de colour. ',
+          purchase: '$92.97',
+          savings: '10%',
+          total: '$83.88',
+          offers: '#HGZ0A2444HGNZ1'
+        }]
+      }]);
+    });
+
 
     var data = [
       { label: "Money Spent", data: [[1,198.50]]},

@@ -50,3 +50,9 @@
 
     %script{ :type => 'text/javascript', :charset => 'utf-8' }
       = yield :page_javascript
+      :plain
+        $(function(){
+          var location = window.location.pathname.replace(/\//g, '');
+          location = location.length === 0 ? 'dashboard' : location;
+          var el = $('.navbar-fixed-top .nav li').find('a:contains(' + (location.charAt(0).toUpperCase() + location.substr(1)) +')').parent().addClass('active')
+        });
