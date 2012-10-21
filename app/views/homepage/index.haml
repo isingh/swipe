@@ -23,19 +23,19 @@
         / Only required for left/right tabs
         %ul.nav.nav-tabs
           %li.active
-            %a{"data-toggle" => "tab", :href => "#campaigns"} Transactions
+            %a{"data-toggle" => "tab", :href => "#transactions"} Transactions
           %li
-            %a{"data-toggle" => "tab", :href => "#live"} Pending
+            %a{"data-toggle" => "tab", :href => "#pending"} Pending
           %li
-            %a{"data-toggle" => "tab", :href => "#inactive"} Offers
+            %a{"data-toggle" => "tab", :href => "#offers"} Offers
         .tab-content
-          #campaigns.tab-pane.active
+          #transactions.tab-pane.active
             .clearfix
             %section#gridCustomization{:style => "margin-top: 10px;"}
               %table#grid
-          #live.tab-pane
+          #pending.tab-pane
             %p.center You do not currently have any pending transactions.
-          #inactive.tab-pane
+          #offers.tab-pane
             %p.center There are currently no available offers.
       #new.modal.hide
         .modal-header
@@ -53,7 +53,19 @@
                 %p
                   Save 5% off your total purchase price!
               .pull-right
-                .btn.btn-success
+                .btn.btn-success.redeem-btn
+                  Redeem
+            %li.clearfix
+              .pull-left
+                .brand-icon
+                  %img{ src: 'assets/netflix_logo.png'}
+              .pull-left
+                %h4
+                  Sign-up for 30 Days Free of Netflix
+                %p
+                  Receive a $10.00 credit back to your card!
+              .pull-right
+                .btn.btn-success.redeem-netflix
                   Redeem
             %li.clearfix
               .pull-left
@@ -63,12 +75,43 @@
                 %h4
                   Register an account with Mint.com
                 %p
-                  Receive a $10.00 credit to your card!
+                  Receive a $1.00 credit back to your card!
               .pull-right
-                .btn.btn-success
+                .btn.btn-success.redeem-btn
                   Redeem
         .modal-footer
           %a.btn{"data-dismiss" => "modal", :href => "#"} Cancel
+
+      #completed.modal.hide{ :style => 'width: 300px; left: 63%;'}
+        .modal-body{:style => 'text-align: center;'}
+          .success-icon
+            %img{ src: 'assets/success.png'}
+          %p.lead
+            You've successful redeemed the offer!
+        .modal-footer{:style => 'text-align: center;'}
+          %a#completed_offer.btn{"data-dismiss" => 'modal', :href => '#'}
+            OK
+
+      #interstitial.modal.hide
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"} ×
+          %h3 Sign-up for 30 Days Free of Netflix
+        .modal-body
+          .pull-left
+            .brand-icon.big
+              %img{ src: 'assets/netflix_logo.png'}
+          .pull-left
+            %div{:style => 'padding: 0 10px; width: 400px;'}
+              %p
+                You will be redirected to the Netflix registration page when you click "Continue".
+                Complete the form and submit your information.
+              %p
+                Once your form has been process your card will be credited the <b>$10.00</b>.
+        .modal-footer
+          %a.btn{"data-dismiss" => 'modal', :href => '#'}
+            Cancel
+          %a.btn.btn-success{"data-dismiss" => 'modal', :href => '#'}
+            Continue
 
 - content_for :page_scripts do
   = javascript_include_tag('charting/jquery.flot.js')

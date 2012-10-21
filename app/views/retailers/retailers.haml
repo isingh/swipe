@@ -5,8 +5,15 @@
     }
 
     #searchbox {
+    background: #444;
       position: absolute;
+      width: 85%;
       z-index: 100;
+    }
+
+    #searchbox input {
+      width: 97%;
+      margin: 10px;
     }
 
     #map img {
@@ -15,8 +22,7 @@
 
 .content.container-fluid
   #searchbox
-    %h1
-      Hello!
+    %input{:type => 'text', :placeholder => 'Search for a business...'}
   #map
 
 %script{:src => "http://maps.googleapis.com/maps/api/js?key=AIzaSyAbVU6r4eUcGLrvbCYRl6a9lueOY_txegc&sensor=true"}

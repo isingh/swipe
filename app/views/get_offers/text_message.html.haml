@@ -28,5 +28,36 @@
               %p
                 = "#{offer.description}"
             .pull-right
-              .btn.btn-success
+              .btn.btn-success.redeem-btn
                 Redeem
+
+#completed.modal.hide{ :style => 'width: 300px; left: 63%;'}
+  .modal-body{:style => 'text-align: center;'}
+    .success-icon
+      %img{ src: 'assets/success.png'}
+    %p.lead
+      You've successful redeemed the offer!
+  .modal-footer{:style => 'text-align: center;'}
+    %a#completed_offer.btn{"data-dismiss" => 'modal', :href => '#'}
+      OK
+
+:javascript
+  $(function(){
+
+    if(navigator.userAgent.indexOf('iOS') !== -1){
+      $('.modal').css({
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+        margin: '10px',
+        width: 'auto'
+      });
+    }
+
+    $('.redeem-btn').on('click', function(){
+      $('#new').modal('hide');
+      $('#completed').modal('show');
+    });
+  });

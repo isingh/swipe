@@ -126,6 +126,10 @@ textarea {
   position: relative;
 }
 
+.ml5 {
+  margin-left: 5px;
+}
+
 .ml10 {
   margin-left: 10px;
 }
@@ -5193,4 +5197,22 @@ a.badge:hover {
 .brand-icon img {
   height: 50px;
   width: 50px;
+}
+
+.brand-icon.big {
+  width: 100px;
+}
+
+.brand-icon.big img {
+  height: 100px;
+  width: 100px;
+}
+.success-icon {
+  margin: 0 auto;
+  width: 150px;
+}
+
+.success-icon img {
+  height: 150px;
+  width: 150px;
 }
