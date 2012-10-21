@@ -17,7 +17,7 @@
     .pull-left
       %a.btn.btn-success{"data-toggle" => "modal", :href => "#new_card"} Link Card
     .pull-right
-      %a#remove-card.btn.disabled
+      %a#remove-card.btn.disabled{"data-toggle" => "modal", :href => "#unlink_card"}
         Unlink Card
 
   .row-fluid
@@ -25,6 +25,16 @@
       %p#nocardsmessage.center You do not currently have any registered card.
       %table#grid{:style => "display: none"}
 
+#unlink_card.modal.hide
+  .modal-header
+    %button.close{"data-dismiss" => "modal", :type => "button"} ×
+    %h3 Unlink Card
+  .modal-body
+    %p
+      Are you sure you want to unlink the selected cards?
+  .modal-footer
+    %a.btn{"data-dismiss" => "modal", :href => "#"} Cancel
+    %a.btn.btn-success{:href => "#"} Yes, continue
 #new_card.modal.hide
   %form#registration_form.form-horizontal{:action => "", :method => "POST", :style => "margin-bottom: 0"}
     .modal-header
