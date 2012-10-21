@@ -64,8 +64,8 @@ $(document).ready(function($) {
     /* ----- TEST ONLY init ----- */
     for(var i=0; i<20; i++){
       var aux = {
-        name: "StarBucks #"+(i+1),
-        description: "Get free coffee in any of our stablishments!",
+        name: "<div style='margin: 0 10px;'><h3>StarBucks #"+(i+1)+"</h3></div>",
+        description: "<div style='margin: 0 10px;'>Get a free coffee at any of our locations!</div>",
         img_src: "http://fc05.deviantart.net/fs71/f/2011/214/d/a/starbucks_logo_icon_by_mahesh69a-d42twe0.png",
         coords: {
           latitude: this.user_pos.coords.latitude - 0.005 + Math.random()*0.01,
