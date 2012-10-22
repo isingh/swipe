@@ -11,4 +11,5 @@ Swipe::Application.routes.draw do
   match '/card_spring/callback', to: 'card_spring#callback', via: [:post]
   match '/offerwall', to: 'offerwall#offerwall'
   match '/retailers', to: 'retailers#retailers'
+  match '/pitch', to: 'pitch#pitch'
 end
