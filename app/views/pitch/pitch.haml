@@ -1,0 +1,515 @@
+%link{ :href => 'http://fonts.googleapis.com/css?family=Montserrat+Alternates: 400, 700', :rel=>'stylesheet', :type =>'text/css'}
+%link{ :href => 'http://fonts.googleapis.com/css?family=ABeeZee', :rel=>'stylesheet', :type =>'text/css'}
+%link{ :href => 'http://fonts.googleapis.com/css?family=Josefin+Slab:300,400,600,700', :rel=>'stylesheet', :type =>'text/css'}
+
+#navigation
+  .sections.clearfix
+    %a.current.nav{:href => "#slide1", :title => "Introduction"} 1
+    %a.nav{:href => "#slide2", :title => "Team"} 2
+    %a.nav{:href => "#slide3", :title => "Problem"} 3
+    %a.nav{:href => "#slide4", :title => "Solution"} 4
+    %a.nav{:href => "#slide5", :title => "Demo"} 5
+    %a.nav{:href => "#slide6", :title => "Technology"} 6
+    %a.nav{:href => "#slide7", :title => "Marketing"} 7
+    %a.nav{:href => "#slide8", :title => "Financials"} 8
+    %a.nav{:href => "#slide9", :title => "Competitors"} 9
+
+#slide1.slide
+  .container
+    #devices
+      %img{:src => "data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="}
+    %h1.mt10 Tapjoy Rewards in the Real World.
+    %h4.mb10 Hackathon Team BAHZILLIONZ OF DOLLAZZZZ
+    %a.btn.btn-large.btn-success.mt10.next{:href => "#"}
+      Show Me the Money!
+  .backdrop
+
+#slide2.slide
+  .title{:style => 'border: none !important;'}
+    #team_banner
+      .ribbon.left
+      .banner
+        %p The Team
+      .ribbon.right
+    /%h1 The Team
+  .container{:style => 'width: 800px; margin: 0 auto;'}
+    .clearfix
+      .about.pull-left
+        .picture
+          .glare
+          %img{:src => "assets/shane.png"}
+        .aboutme
+          %h3
+            Shane "Mack Master" Booth
+          %small
+            Professional Linguist
+      .about.pull-left
+        .picture
+          .glare
+          %img{:src => "assets/kieran.png"}
+        .aboutme
+          %h3
+            Kieran "Loco" Boyle
+          %small
+            Visual Stimulation
+    .clearfix
+      .about.pull-left
+        .picture
+          .glare
+          %img{:src => "assets/sergio.png"}
+        .aboutme
+          %h3
+            Sergio "Rockafeller" Almecija
+          %small
+            The API Guy
+
+      .about.pull-left
+        .picture
+          .glare
+          %img{:src => "assets/inder.png"}
+        .aboutme
+          %h3
+            Inder "Real Deal" Singh
+          %small
+            The Mechanic
+
+    .clearfix
+      .about.pull-left.fancy
+        &#8230;and this guy too, I guess. :)
+      .about.pull-left
+        .picture
+          .glare
+          %img{:src => "assets/salil.png"}
+        .aboutme
+          %h3
+            Salil "Dopetastic" Shah
+          %small
+            He's homeless... and we love the homeless!
+
+#slide3.slide
+  .title
+    %h1.thin
+      %span Current Problem
+
+  %ul.bullet-points
+    %li At the mercy of Apple and dependent on app developers sending us traffic.
+    %li Current system is exteemely game centric, limited to consumers whom are engaged in apps and not brand specific.
+    %li Targeting limitations due to lack of real world transactional data.
+
+#slide4.slide
+  .title
+    %h1.thin
+      %span Our Solution
+
+  %ul.bullet-points
+    %li Integrate our offerwall into a system of real world transactions made at physical locations.
+    %li Targeting based on actual purchase behavior.
+    %li Increase Tapjoy’s overall revenue by enabling customers to earn rewards when they aren’t playing games.
+    %li Limit crushing dependencies like Apple and app developer driven traffic.
+
+#slide5.slide
+  .title
+    %h1.thin
+      %span Demo
+
+#slide6.slide
+  .title
+    %h1.thin
+      %span Technology
+
+#slide7.slide
+  .title
+    %h1.thin
+      %span Marketing
+
+#slide8.slide
+  .title
+    %h1.thin
+      %span Financial Projections
+
+#slide9.slide
+  .title
+    %h1.thin
+      %span Competitive Landscape
+
+#slide7.slide
+
+%style{:type=>'text/css'}
+  :plain
+    body {
+      box-shadow: inset 0 10px 100px rgba(0,0,0, .7);
+    }
+    .navbar {
+      box-shadow: none !important;
+    }
+
+    h1, h2, h3, h4 {
+      color: #595854;
+      font-family: 'ABeeZee', sans-serif;
+      font-weight: 300;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 100;
+      text-align: center;
+      height: 59px;
+      line-height: 59px;
+    }
+
+    .thin {
+      font-family: 'Josefin Slab', sans-serif;
+    }
+
+    #navigation {
+      left: 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999999;
+    }
+
+    #navigation .sections {
+      margin: 0 auto;
+      width: 960px;
+    }
+
+    #navigation a {
+      background: url(assets/inset_button.png) no-repeat 0 0;
+      background-size: 44px 88px;
+      color: #fff;
+      display: block;
+      float: left;
+      font-family: 'Montserrat Alternates';
+      font-size: 18px;
+      height: 44px;
+      line-height: 42px;
+      margin: 10px 10px 20px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      text-shadow: 0 -1px 0 #0e8411;
+      width: 44px;
+    }
+
+    #navigation a:hover,
+    #navigation a.current {
+      background: url(assets/inset_button.png) no-repeat 0 -44px;
+      background-size: 44px 88px;
+      color: #615e5a;
+      text-shadow: none;
+    }
+
+    #navigation a .label {
+      background: rgba(0,0,0, .9);
+      color: #fff;
+      display: none;
+      font-size: 11px;
+      font-weight: 400;
+      left: -22px;
+      position: absolute;
+      top: 55px;
+      width: 80px;
+      text-align: center;
+    }
+
+    #navigation a.current .label,
+    #navigation a:hover .label {
+      display: block;
+    }
+
+    .slide {
+      position: relative;
+      margin: 0;
+      width: 100%;
+      padding: 100px 0 200px;
+    }
+
+    .container {
+      position: relative;
+      width: 940px;
+      margin: 0 auto;
+      z-index: 9;
+    }
+
+    .title {
+      border-bottom: 2px dashed rgba(0,0,0, .1);
+      margin: 0 0 65px;
+      position: relative;
+      text-align: center;
+      width: 100%;
+    }
+
+    .title h1 {
+      position: absolute;
+      left: 0;
+      text-align: center;
+      top: -30px;
+      width: 100%;
+    }
+
+    .white {
+      color: #fff;
+    }
+    .shadow {
+      text-shadow: 0 1px 1px #000;
+    }
+
+    .backdrop {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      box-shadow: inset 0 1px 0 #eee;
+      bottom: 0;
+      position: absolute;
+      height: 380px;
+      width: 100%;
+      z-index: 7;
+    }
+
+    #logo img {
+      background: url(assets/swipe_big.png) no-repeat center center;
+      background-size: 370px 210px;
+      height: 210px;
+      width: 369px;
+    }
+
+    #devices {
+      background: url(assets/devices.png) no-repeat center center;
+      background-size: 600px 407px;
+      height: 407px;
+      margin: 0 auto;
+      width: 600px;
+    }
+
+    #slide1 {
+      position: relative;
+      text-align: center;
+    }
+
+    #slide2,
+    #slide3,
+    #slide4,
+    #slide5,
+    #slide6,
+    #slide7,
+    #slide8,
+    #slide9,
+    .title h1 span {
+      background: #faf8f3 url(assets/bg-pattern.png) center top;
+    }
+
+    .about {
+      width: 400px;
+    }
+
+    .about .picture,
+    .about .aboutme {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .aboutme {
+      margin-top: 20px;
+      text-shadow: 0 1px 0 #fff;
+      width: 200px;
+    }
+
+    .about .aboutme small {
+      color: #52ab51;
+      font-family: 'Montserrat Alternates';
+    }
+
+    .picture {
+      background: #fff;
+      box-shadow: 0 0 2px rgba(0,0,0, .5);
+      margin: 15px;
+      padding: 5px;
+      position: relative;
+      width: 150px;
+    }
+
+    .picture img {
+      height: 150px;
+      width: 150px;
+    }
+    .picture .glare {
+      background: url(assets/picture_glare.png) no-repeat top right;
+      background-size: 150px 150px;
+      height: 150px;
+      position: absolute;
+      right: 0
+      top: 0;
+      width: 150px;
+      z-index: 10;
+    }
+
+    .fancy {
+      color: #777;
+      font: italic 24px "Georgia";
+      padding-top: 70px;
+      text-align: center;
+      text-shadow: 0 1px 0 #fff;
+    }
+
+    #team_banner {
+      width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .banner {
+      background: rgba(0,0,0, 1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      height: 75px;
+      margin-left: 50px;
+      position: relative;
+      width: 500px;
+      z-index: 10;
+    }
+
+    .banner p {
+      color: #fff;
+      font: normal 45px 'Josefin Slab';
+      line-height: 60px;
+      margin: 0;
+      padding: 10px;
+      text-transform: capitalize;
+    }
+
+    .banner:before {
+      bottom: -20px;
+      border-bottom: 20px solid transparent;
+      border-right: 70px solid #555;
+      border-top: 0px solid transparent;
+      content: "";
+      height: 0;
+      left: 0px;
+      position: absolute;
+      width: 0;
+    }
+
+    .banner:after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-left: 70px solid #555;
+      border-top: 0px solid transparent;
+      border-bottom: 20px solid transparent;
+    }
+
+    .ribbon {
+      background: #333;
+      height: 75px;
+      position: absolute;
+      width: 120px;
+      z-index: 0;
+    }
+
+    .ribbon.left {
+      left: 0;
+      top: 20px;
+      z-index: 0;
+    }
+
+    .ribbon.left:before {
+      border-right: 30px solid #333;
+      border-top: 0 solid transparent;
+      border-bottom: 37.5px solid transparent;
+      content: "";
+      height: 0;
+      left: -29px;
+      position: absolute;
+      top: 0;
+      width: 0;
+    }
+
+    .ribbon.left:after {
+      bottom: 0;
+      border-bottom: 0 solid transparent;
+      border-right: 30px solid #333;
+      border-top: 37.5px solid transparent;
+      content: "";
+      height: 0;
+      left: -29px;
+      position: absolute;
+      width: 0;
+    }
+
+    .ribbon.right {
+      right: 0;
+      top: 20px;
+    }
+
+    .ribbon.right:before {
+      content: "";
+      position: absolute;
+      right: -29px;
+      top: 0;
+      width: 0;
+      height: 0;
+      border-left: 30px solid #333;
+      border-top: 0 solid transparent;
+      border-bottom: 37.5px solid transparent;
+    }
+
+    .ribbon.right:after {
+      content: "";
+      position: absolute;
+      right: -29px;
+      bottom: 0;
+      width: 0;
+      height: 0;
+      border-left: 30px solid #333;
+      border-top: 37.5px solid transparent;
+      border-bottom: 0 solid transparent;
+    }
+
+    .bullets-banner {
+      background: url(assets/cutout_banner.png) no-repeat center center;
+      background-size: 365px 56px;
+      height: 56px;
+      margin: 0 auto;
+      width: 365px;
+    }
+
+    .bullets-banner h1 {
+      color: #444;
+      text-shadow: 0 1px 0 #fff;
+    }
+
+    .bullet-points {
+      list-style-type: none;
+      margin: 100px auto 0;
+      padding: 0;
+      padding-top: 50px;
+      width: 800px;
+    }
+
+    .bullet-points li {
+      color: #555;
+      font: 100 24px 'ABeeZee';
+      height: auto;
+      margin: 20px 0;
+      padding: 10px;
+      text-shadow: 0 1px 0 #fff;
+    }
+
+- content_for :page_scripts do
+  = javascript_include_tag('jquery.waypoints.js')
+  = javascript_include_tag('jquery.scrollto.js')
+  = javascript_include_tag('jquery.easing.js')
+  = javascript_include_tag('jquery.pitchdeck.js')
+
+:javascript
+  $(document).ready(function() {
+    $(document).pitchdeck({
+      top_links: '#navigation a',
+      easing: 'easeInOutQuart',
+      next_button: '.next, .start',
+      link_labels: true
+    });
+  });
