@@ -8,11 +8,12 @@
     %a.nav{:href => "#slide2", :title => "Team"} 2
     %a.nav{:href => "#slide3", :title => "Problem"} 3
     %a.nav{:href => "#slide4", :title => "Solution"} 4
-    %a.nav{:href => "#slide5", :title => "Demo"} 5
-    %a.nav{:href => "#slide6", :title => "Technology"} 6
-    %a.nav{:href => "#slide7", :title => "Marketing"} 7
-    %a.nav{:href => "#slide8", :title => "Financials"} 8
-    %a.nav{:href => "#slide9", :title => "Competitors"} 9
+    %a.nav{:href => "#slide5", :title => "How it Works"} 5
+    %a.nav{:href => "#slide6", :title => "Demo"} 6
+    %a.nav{:href => "#slide7", :title => "Technology"} 7
+    %a.nav{:href => "#slide8", :title => "Market"} 8
+    %a.nav{:href => "#slide9", :title => "Financials"} 9
+    %a.nav{:href => "#slide10", :title => "Competitors"} 10
 
 #slide1.slide
   .container
@@ -42,7 +43,7 @@
           %h3
             Shane "Mack Master" Booth
           %small
-            Professional Linguist
+            Professional Thinker
       .about.pull-left
         .picture
           .glare
@@ -110,29 +111,62 @@
 #slide5.slide
   .title
     %h1.thin
-      %span Demo
+      %span How it Works
 
 #slide6.slide
   .title
     %h1.thin
-      %span Technology
+      %span Demo
 
-#slide7.slide
+#slide7.slide{ :style => 'text-align: center;'}
   .title
     %h1.thin
-      %span Marketing
+      %span Technology
+
+  %img{ :src => 'assets/cardspring.png'}
 
 #slide8.slide
   .title
     %h1.thin
-      %span Financial Projections
+      %span Market / Opportunity
 
+  #consumers
+  .market-facts
+    .thin{:style => 'font-size: 18px; color: #555; text-shadow: 0 1px 0 #fff; margin-bottom: 5px;'}
+      Quick fact:
+    %div
+      %h3
+        %span.big{:style => 'color: #54af53; text-shadow: 0 1px 0 #fff; margin-top: 15px;'}
+          50.4%
+        of US Consumers own a Smartphone
+      %h5{:style => ''}
+        Nielson : May 2012
+
+    %hr
+
+    %div
+      %h2{:style => 'margin-top: 30px; margin-bottom: 30px;'}
+        Why not take the mobile wallet approach? Because...
+
+    %hr
+
+    .thin{:style => 'font-size: 18px; color: #555; text-shadow: 0 1px 0 #fff; margin-bottom: 5px; margin-top: 30px;'}
+      Quick fact:
+    %h3
+      %span.big{:style => 'color: #cc0000;  text-shadow: 0 1px 0 #fff; margin-top: 15px;'}
+        Only 3%
+      of consumers are making payments with those types of solutions!
+    %h5{:style => 'text-align: left;'}
+      Survey of Consumer Payment Choice 2011
 #slide9.slide
   .title
     %h1.thin
-      %span Competitive Landscape
+      %span Financial Projections
 
-#slide7.slide
+#slide10.slide
+  .title
+    %h1.thin
+      %span Competitive Landscape
 
 %style{:type=>'text/css'}
   :plain
@@ -143,7 +177,7 @@
       box-shadow: none !important;
     }
 
-    h1, h2, h3, h4 {
+    h1, h2, h3, h4, h5, h6 {
       color: #595854;
       font-family: 'ABeeZee', sans-serif;
       font-weight: 300;
@@ -222,7 +256,7 @@
       position: relative;
       margin: 0;
       width: 100%;
-      padding: 100px 0 200px;
+      padding: 100px 0;
     }
 
     .container {
@@ -251,6 +285,7 @@
     .white {
       color: #fff;
     }
+
     .shadow {
       text-shadow: 0 1px 1px #000;
     }
@@ -294,8 +329,14 @@
     #slide7,
     #slide8,
     #slide9,
+    #slide10,
     .title h1 span {
       background: #faf8f3 url(assets/bg-pattern.png) center top;
+    }
+
+    #slide7,
+    #slide7 .title h1 span {
+      background: #faf8f3 url(assets/blue_tile.png) center top;
     }
 
     .about {
@@ -511,7 +552,51 @@
       text-shadow: 0 1px 0 #111;
     }
 
+    #consumers {
+      height: 500px;
+      margin-left: 100px;
+      width: 500px;
+    }
+
+    #consumers,
+    .market-facts {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .market-facts {
+      margin-top: 75px;
+      width: 445px;
+    }
+
+    .market-facts h5 {
+      color: #888;
+      text-align: right;
+    }
+
+    .market-facts span.big {
+      font-size: 40px;
+    }
+
+    .pie-labels {
+      background: rgba(0,0,0, .8);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 14px;
+      margin-left: 30px;
+      padding: 5px 10px;
+      white-space: nowrap;
+    }
+
+    #pieLabel2 {
+      left: 250px !important;
+      top: 390px !important;
+    }
+
 - content_for :page_scripts do
+  = javascript_include_tag('charting/jquery.flot.js')
+  = javascript_include_tag('charting/jquery.flot.pie.js')
+  = javascript_include_tag('charting/jquery.flot.time.js')
   = javascript_include_tag('jquery.waypoints.js')
   = javascript_include_tag('jquery.scrollto.js')
   = javascript_include_tag('jquery.easing.js')
@@ -525,4 +610,34 @@
       next_button: '.next, .start',
       link_labels: true
     });
+
+    var data = [
+      { label: "iOS", data: [[1,32]]},
+      { label: "Blackberry", data: [[1,12]]},
+      { label: "Windows Mobile", data: [[1,6]]},
+      { label: "Other", data: [[1,2]]},
+      { label: "Android", data: [[1,49]]}
+    ];
+
+    var config = {
+      colors: ['#3d6d9c', '#70a35d', '#ebaf56', '#c84342', '#82548b'],
+      series: {
+        pie: {
+          show: true,
+          label: {
+            show: true,
+            radius: 3/4,
+            formatter: function(label, series){
+              return '<div class="pie-labels">' + label + ' - ' + Math.round(series.percent) + '%</div>';
+            }
+          }
+        }
+      },
+      legend: {
+        show: false
+      }
+    };
+
+    $.plot($("#consumers"), data, config);
+
   });
