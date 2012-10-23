@@ -41,18 +41,18 @@
           %img{:src => "assets/shane.png"}
         .aboutme
           %h3
-            Shane "Mack Master" Booth
+            Shane Booth
           %small
-            Professional Thinker
+            Professional Thinker & UX Specialist
       .about.pull-left
         .picture
           .glare
           %img{:src => "assets/kieran.png"}
         .aboutme
           %h3
-            Kieran "Loco" Boyle
+            Kieran Boyle
           %small
-            Visual Stimulation
+            Concept Delivery & Visual Stimulation
     .clearfix
       .about.pull-left
         .picture
@@ -60,7 +60,7 @@
           %img{:src => "assets/sergio.png"}
         .aboutme
           %h3
-            Sergio "Rockafeller" Almecija
+            Sergio Almecija
           %small
             The API Guy
 
@@ -70,31 +70,31 @@
           %img{:src => "assets/inder.png"}
         .aboutme
           %h3
-            Inder "Real Deal" Singh
+            Inder Singh
           %small
             The Mechanic
 
     .clearfix
       .about.pull-left.fancy
-        &#8230;and this guy too, I guess. :)
+        &#8230;and this guy too, I guess.
       .about.pull-left
         .picture
           .glare
           %img{:src => "assets/salil.png"}
         .aboutme
           %h3
-            Salil "Dopetastic" Shah
+            Salil Shah
           %small
             He's homeless... and we love the homeless!
 
 #slide3.slide
   .title
     %h1.thin
-      %span Current Problem
+      %span Current Problems
 
   %ul.bullet-points
     %li &nbsp;At the mercy of Apple and dependent on app developers<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sending us traffic.
-    %li &nbsp;Current system is exteemely game centric, limited to consumers<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; whom are engaged in apps and not brand specific.
+    %li &nbsp;Current system is game centric, not brand specific, and our<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scope is limited to consumers whom are engaged in apps.
     %li &nbsp;Targeting limitations due to lack of real world transactional<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data.
 
 #slide4.slide
@@ -113,10 +113,20 @@
     %h1.thin
       %span How it Works
 
+  .plpl{:style => 'padding-top: 200px;'}
+
 #slide6.slide
   .title
     %h1.thin
       %span Demo
+
+  .bannerTwo
+    .line
+      %span Prepare
+    .line
+      %span To be...
+    .line
+      %span AMAZED!
 
 #slide7.slide{ :style => 'text-align: center;'}
   .title
@@ -133,13 +143,14 @@
   .market-wrapper
     #consumers
     .market-facts
-      .thin{:style => 'font-size: 18px; color: #555; text-shadow: 0 1px 0 #fff; margin-bottom: 5px;'}
-        Quick fact:
+      .thin.fact
+        %span
+          QUICK FACT:
       %div.mt5
         %h3
           %span.big{:style => 'color: #54af53; text-shadow: 0 1px 0 #fff; margin-top: 15px;'}
             50.4%
-          of US Consumers own a Smartphone
+          of US Consumers own a Smartphone.
         %h5{:style => ''}
           Nielson, May 2012
 
@@ -154,16 +165,18 @@
 
         %h5{:style => 'text-align: left;'}
           Survey of Consumer Payment Choice 2011
+
       %hr
 
       %div
-        %h2{:style => 'margin-top: 30px; margin-bottom: 30px; font-size: 40px; line-height: 44px;'}
-          Why not take the mobile wallet approach? Because...
+        %h2{:style => 'margin-top: 50px; margin-bottom: 50px; font-size: 30px; line-height: 44px;'}
+          Why not take the mobile wallet approach? Well...
 
       %hr
 
-      .thin{:style => 'font-size: 18px; color: #555; text-shadow: 0 1px 0 #fff; margin-bottom: 5px; margin-top: 30px;'}
-        Quick fact:
+      .thin.fact
+        %span
+          QUICK FACT:
       %h3
         %span.big{:style => 'color: #cc0000;  text-shadow: 0 1px 0 #fff; margin-top: 15px;'}
           Only 3%
@@ -201,6 +214,18 @@
       text-align: center;
       height: 59px;
       line-height: 59px;
+    }
+
+    @font-face {
+      font-family: 'bazarmedium';
+      src: url('assets/fonts/bazar-webfont.eot');
+      src: url('assets/fonts/bazar-webfont.eot?#iefix') format('embedded-opentype'),
+           url('assets/fonts/bazar-webfont.woff') format('woff'),
+           url('assets/fonts/bazar-webfont.ttf') format('truetype'),
+           url('assets/fonts/bazar-webfont.svg#bazarmedium') format('svg');
+      font-weight: normal;
+      font-style: normal;
+
     }
 
     .thin {
@@ -571,9 +596,9 @@
 
     #consumers {
       height: 440px;
-      margin-left: 80px;
-      margin-right: 20px;
-      margin-top: 0px;
+      margin-left: 20px;
+      margin-right: 40px;
+      margin-top: 90px;
       width: 440px;
     }
 
@@ -584,8 +609,8 @@
     }
 
     .market-facts {
-      margin-top: 75px;
-      width: 445px;
+      margin-top: 50px;
+      width: 448px;
     }
 
     .market-facts h5 {
@@ -595,6 +620,20 @@
 
     .market-facts span.big {
       font-size: 40px;
+    }
+
+    .fact {
+      color: #444;
+      font-size: 11px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .fact span {
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 1px 0 #fff;
+      padding: 5px 7px 3px;
     }
 
     .pie-labels {
@@ -614,6 +653,79 @@
     #pieLabel2 {
       left: 205px !important;
       top: 315px !important;
+    }
+
+    .bannerTwo {
+      position: relative;
+      z-index: 1;
+      margin: 200px auto;
+      width: 330px;
+    }
+
+    .bannerTwo .line {
+      margin: 0 0 10px;
+      width: 100%;
+      height: 78px;
+      box-shadow: 10px 10px 10px rgba(0,0,0,0.05);
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 3em;
+      line-height: 78px;
+      -webkit-transform: skew(0, -15deg);
+         -moz-transform: skew(0, -15deg);
+          -ms-transform: skew(0, -15deg);
+           -o-transform: skew(0, -15deg);
+              transform: skew(0, -15deg);
+    }
+
+    .bannerTwo .line:after,
+    .bannerTwo .line:first-child:before {
+      position: absolute;
+      top: 44px;
+      left: 0;
+      z-index: -1;
+      display: block;
+      width: 330px;
+      height: 78px;
+      border-radius: 4px;
+      background: rgba(180,180,180,0.8);
+      content: '';
+      -webkit-transform: skew(0, 15deg);
+         -moz-transform: skew(0, 15deg);
+          -ms-transform: skew(0, 15deg);
+           -o-transform: skew(0, 15deg);
+              transform: skew(0, 15deg);
+    }
+
+    .bannerTwo .line:first-child:before {
+      top: -10px;
+      right: 0;
+      left: auto;
+    }
+
+    .bannerTwo .line:first-child:before,
+    .bannerTwo .line:last-child:after {
+      width: 0;
+      height: 0;
+      border-width: 38px;
+      border-style: solid;
+      border-color: rgba(180,180,180,0.8) rgba(180,180,180,0.8) transparent transparent;
+      background: transparent;
+    }
+
+    .bannerTwo .line:last-child:after {
+      top: 12px;
+      border-color: transparent transparent rgba(180,180,180,0.8) rgba(180,180,180,0.8);
+    }
+
+    .bannerTwo span {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0, .8);
+      color: #fff;
+      font-family: 'bazarmedium';
+      text-shadow: 1px 1px 0 #555, 1px 2px 0 #555, 1px 3px 0 #555, 1px 4px 0 #555;
     }
 
 - content_for :page_scripts do
