@@ -1,3 +1,5 @@
+- @page_title = 'Swipe - A cloud based financial rewards system that links directly to consumer credit and debit transactions.';
+
 %link{ :href => 'http://fonts.googleapis.com/css?family=Montserrat+Alternates: 400, 700', :rel=>'stylesheet', :type =>'text/css'}
 %link{ :href => 'http://fonts.googleapis.com/css?family=ABeeZee', :rel=>'stylesheet', :type =>'text/css'}
 %link{ :href => 'http://fonts.googleapis.com/css?family=Josefin+Slab:300,400,600,700', :rel=>'stylesheet', :type =>'text/css'}
@@ -10,8 +12,8 @@
     %a.nav{:href => "#slide4", :title => "Solution"} 4
     %a.nav{:href => "#slide5", :title => "How it Works"} 5
     %a.nav{:href => "#slide6", :title => "Demo"} 6
-    %a.nav{:href => "#slide7", :title => "Technology"} 7
-    %a.nav{:href => "#slide8", :title => "Market"} 8
+    %a.nav{:href => "#slide7", :title => "Market"} 7
+    %a.nav{:href => "#slide8", :title => "Monetizaton"} 8
     %a.nav{:href => "#slide9", :title => "Financials"} 9
     %a.nav{:href => "#slide10", :title => "Competitors"} 10
 
@@ -19,8 +21,8 @@
   .container
     #devices
       %img{:src => "data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="}
-    %h1.mt10 Tapjoy Rewards in the Real World.
-    %h4.mb10 Hackathon Team BAHZILLIONZ OF DOLLAZZZZ
+    %h1.mt10 Tapjoy Rewards in the Real World!
+    %h5.mb10 Hackathon Team Billionz of Dollazzz
     %a.btn.btn-large.btn-success.mt10.next{:href => "#"}
       Show Me the Money!
   .backdrop
@@ -93,7 +95,7 @@
       %span Current Problems
 
   %ul.bullet-points
-    %li &nbsp;At the mercy of Apple and dependent on app developers<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sending us traffic.
+    %li &nbsp;At the mercy of Apple and dependent on developers<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sending us traffic.
     %li &nbsp;Current system is game centric, not brand specific, and our<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scope is limited to consumers whom are engaged in apps.
     %li &nbsp;Targeting limitations due to lack of real world transactional<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data.
 
@@ -105,15 +107,16 @@
   %ul.bullet-points
     %li &nbsp;Integrate our offerwall into a system of real world transactions<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; made at physical locations.
     %li &nbsp;Targeting based on actual purchase behavior.
-    %li &nbsp;Increase Tapjoy’s overall revenue by enabling customers to earn<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rewards when they aren’t playing games.
+    %li &nbsp;Increase Tapjoy’s overall revenue by enabling customers to earn<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rewards outside of gaming.
     %li &nbsp;Limit crushing dependencies like Apple and app developer<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; driven traffic.
 
 #slide5.slide
   .title
     %h1.thin
-      %span How it Works
+      %span How It Works
 
-  .plpl{:style => 'padding-top: 200px;'}
+  .howitworks
+    %img{:src => "assets/how_it_works.png"}
 
 #slide6.slide
   .title
@@ -128,33 +131,34 @@
     .line
       %span AMAZED!
 
-#slide7.slide{ :style => 'text-align: center;'}
+  %div{ :style => 'text-align: center;' }
+    .thin.fact
+      %span
+        DISCLAIMER
+    %p.thin Please keep in mind we built this entire thing in <u>under 48 hours</u>.
+
+#slide7.slide
   .title
     %h1.thin
-      %span Technology
-
-  %img{ :src => 'assets/cardspring.png'}
-
-#slide8.slide
-  .title
-    %h1.thin
-      %span Market / Opportunity
+      %span Market & Opportunity
 
   .market-wrapper
-    #consumers
+    .benefits
+      #consumers
+
     .market-facts
       .thin.fact
         %span
-          QUICK FACT:
+          QUICK FACT
       %div.mt5
         %h3
           %span.big{:style => 'color: #54af53; text-shadow: 0 1px 0 #fff; margin-top: 15px;'}
             50.4%
           of US Consumers own a Smartphone.
-        %h5{:style => ''}
+        %h5{:style => 'text-align: left;'}
           Nielson, May 2012
 
-      %div.mt10
+      %div.mt10{:style => 'margin-bottom: 25px;'}
         %h3
           %span.big{:style => 'color: #54af53; text-shadow: 0 1px 0 #fff; margin-top: 15px; font-size: 24px;'}
             80%
@@ -166,23 +170,44 @@
         %h5{:style => 'text-align: left;'}
           Survey of Consumer Payment Choice 2011
 
+      %div.mt5
+        %h3
+          %span.big{:style => 'color: #54af53; text-shadow: 0 1px 0 #fff; margin-top: 15px;'}
+            72%
+          have used a debit or credit card in the last year!
+        %h5{:style => 'text-align: left;'}
+          Javelin Strategy Study, 2009
+
       %hr
 
       %div
-        %h2{:style => 'margin-top: 50px; margin-bottom: 50px; font-size: 30px; line-height: 44px;'}
-          Why not take the mobile wallet approach? Well...
+        %h2{:style => 'margin-top: 25px; margin-bottom: 25px; font-size: 30px; line-height: 44px;'}
+          Why not launch a virtual wallet solution?
 
-      %hr
-
-      .thin.fact
+      .thin.fact{:style => 'margin-top: 25px;'}
         %span
-          QUICK FACT:
+          QUICK FACT
       %h3
         %span.big{:style => 'color: #cc0000;  text-shadow: 0 1px 0 #fff; margin-top: 15px;'}
           Only 3%
-        of consumers are making payments with those types of solutions!
+        of consumers are actually using those types of solutions for purchasing!
       %h5{:style => 'text-align: left;'}
         Survey of Consumer Payment Choice 2011
+
+#slide8.slide
+  .title
+    %h1.thin
+      %span Monetization
+
+  .monetize-splash
+    %img{ :src => 'assets/monetize.png'}
+
+  %ul.money
+    %li &nbsp;Ability to charge on coupon redemption which eliminates media waste.
+    %li &nbsp;Re-engage consumers who are shopping for your brand and similar brands.
+    %li &nbsp;Brand friendly distribution channel that lives outside of gaming.
+    %li &nbsp;Target weak demographics for brands using existing Tapjoy consumer base through Facebook data.
+
 #slide9.slide
   .title
     %h1.thin
@@ -371,11 +396,6 @@
       background: #faf8f3 url(assets/bg-pattern.png) center top;
     }
 
-    #slide7,
-    #slide7 .title h1 span {
-      background: #faf8f3 url(assets/blue_tile.png) center top;
-    }
-
     .about {
       width: 400px;
     }
@@ -410,6 +430,7 @@
       height: 150px;
       width: 150px;
     }
+
     .picture .glare {
       background: url(assets/picture_glare.png) no-repeat top right;
       background-size: 150px 150px;
@@ -596,17 +617,38 @@
 
     #consumers {
       height: 440px;
-      margin-left: 20px;
-      margin-right: 40px;
-      margin-top: 90px;
+      margin-left: 0px;
+      margin-right: 60px;
       width: 440px;
     }
 
-    #consumers,
+    .benefits,
     .market-facts {
       display: inline-block;
       vertical-align: top;
     }
+
+    .money {
+      width: 700px;
+      list-style-type: none;
+      margin: 0 auto;
+      padding: 0;
+      padding-left: 50px;
+    }
+
+    .money li {
+      color: #555;
+      font: 100 14px 'ABeeZee';
+      height: auto;
+      margin: 5px 0;
+      text-shadow: 0 1px 0 #fff;
+    }
+
+    .money li:before {
+      content: '✓';
+      font-size: 18px;
+    }
+
 
     .market-facts {
       margin-top: 50px;
@@ -698,8 +740,8 @@
     }
 
     .bannerTwo .line:first-child:before {
-      top: -10px;
-      right: 0;
+      top: -13px;
+      right: -6px;
       left: auto;
     }
 
@@ -707,14 +749,14 @@
     .bannerTwo .line:last-child:after {
       width: 0;
       height: 0;
-      border-width: 38px;
+      border-width: 42px;
       border-style: solid;
       border-color: rgba(180,180,180,0.8) rgba(180,180,180,0.8) transparent transparent;
       background: transparent;
     }
 
     .bannerTwo .line:last-child:after {
-      top: 12px;
+      top: 13px;
       border-color: transparent transparent rgba(180,180,180,0.8) rgba(180,180,180,0.8);
     }
 
@@ -722,10 +764,30 @@
       display: block;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0, .8);
-      color: #fff;
+      background-color: #fff;
+      background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, rgba(0,0,0,.15) 25%, rgba(0,0,0,.15) 50%, transparent 50%, transparent 75%,  rgba(0,0,0,.15) 75%);
+      background-image: -moz-linear-gradient(left top, rgba(0,0,0,.1) 0%, rgba(0,0,0,.1) 100%);
+      background-image: -o-linear-gradient(left top, transparent 0%, transparent 25%, rgba(0,0,0,.15) 25%, rgba(0,0,0,.15) 50%, transparent 50%, transparent 75%,   rgba(0,0,0,.15) 75%);
+      background-size: 4px 4px;
+      border: 3px solid #fff;
+      color: #333;
       font-family: 'bazarmedium';
-      text-shadow: 1px 1px 0 #555, 1px 2px 0 #555, 1px 3px 0 #555, 1px 4px 0 #555;
+      text-shadow: 1px 1px 0 #fff, 1px 2px 0 #fff, 1px 3px 0 #fff, 1px 4px 0 #fff, 1px 5px 0 #bbb;
+    }
+
+    .howitworks,
+    .monetize-splash {
+      text-align: center;
+    }
+
+    .howitworks img,
+    .monetize-splash img {
+      height: 60%;
+      width: 60%;
+    }
+
+    .monetize-splash {
+      padding-top: 100px;
     }
 
 - content_for :page_scripts do
